@@ -1,0 +1,2 @@
+subjects,sources,full_pair_ref_size,full_pair_ref_fraction,split_pair_ref_size,pair_ref_accuracy,all_accuracy,pair_ref_diff_vs_all,pair_ref_diff_vs_all_ci_low,pair_ref_diff_vs_all_ci_high
+20,5.95,2.55,0.4266666666666666,2.37,0.5822916666666667,0.5845902777777778,-0.0022986111111111297,-0.019439345798168826,0.014842123575946567

@@ -1,0 +1,25 @@
+{
+  "analysis_unit": "subject",
+  "split_handling": "balanced accuracy is averaged over target splits within subject",
+  "contrast": "Pair/Ref minus all-source pooling",
+  "primary_margin": 0.02,
+  "margin_sensitivity": [
+    0.01,
+    0.02,
+    0.03
+  ],
+  "tests": [
+    "one-sided paired t non-inferiority test",
+    "one-sided Wilcoxon signed-rank non-inferiority test"
+  ],
+  "confidence_interval": "two-sided 95% t interval for the subject-level mean contrast",
+  "noninferior_at_delta_rule": "the two-sided 95% confidence-interval lower endpoint exceeds minus the margin",
+  "decision_alpha": 0.05,
+  "analysis_filter": "primary",
+  "primary_margin_timing": "the 0.02 margin was used for the Ma2020/Stieger2021 analysis and carried forward unchanged to Zhou2020",
+  "inputs": {
+    "ma2020": "results/eeg/ma2020/downstream_by_subject.csv",
+    "stieger2021": "results/eeg/stieger2021/downstream_by_subject.csv",
+    "zhou2020": "results/eeg/zhou2020/downstream_by_subject.csv"
+  }
+}

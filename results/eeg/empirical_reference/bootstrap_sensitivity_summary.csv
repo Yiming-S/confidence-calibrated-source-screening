@@ -1,0 +1,4 @@
+bootstrap_repetitions,subject,replicate,set_size,oracle_retained,jaccard_vs_max_b
+199,10.2,9.5,1.6,1.0,1.0
+499,10.2,9.5,1.6,1.0,0.99
+999,10.2,9.5,1.6,1.0,1.0

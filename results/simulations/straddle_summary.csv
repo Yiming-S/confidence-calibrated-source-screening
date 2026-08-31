@@ -1,0 +1,5 @@
+geometry,n_target,cover_shared,cover_wrong,cover_shared_abs,cover_wrong_abs,var_ratio,replicates
+same_side,50,0.958,1.0,0.958,1.0,0.026361190883510154,2000
+same_side,200,0.958,1.0,0.958,1.0,0.09320153746521785,2000
+straddle,50,0.9465,0.846,0.9465,0.846,1.9166381898143998,2000
+straddle,200,0.9445,0.8595,0.9445,0.8595,1.8914396267746065,2000

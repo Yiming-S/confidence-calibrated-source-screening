@@ -1,0 +1,44 @@
+{
+  "script": "ci_gate_straddle_undercoverage_sim.py",
+  "mc": 2000,
+  "boot": 999,
+  "alpha": 0.05,
+  "a": 1.0,
+  "n_source": 2000,
+  "n_targets": [
+    50,
+    200
+  ],
+  "seed": 20260616,
+  "conditions": [
+    {
+      "label": "straddle_nT50",
+      "geometry": "straddle",
+      "a": 1.0,
+      "n_source": 2000,
+      "n_target": 50
+    },
+    {
+      "label": "straddle_nT200",
+      "geometry": "straddle",
+      "a": 1.0,
+      "n_source": 2000,
+      "n_target": 200
+    },
+    {
+      "label": "same_side_nT50",
+      "geometry": "same_side",
+      "a": 1.0,
+      "n_source": 2000,
+      "n_target": 50
+    },
+    {
+      "label": "same_side_nT200",
+      "geometry": "same_side",
+      "a": 1.0,
+      "n_source": 2000,
+      "n_target": 200
+    }
+  ],
+  "runtime_seconds": 183.4
+}

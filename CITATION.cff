@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this repository, cite the software artifact described here."
+title: "Confidence-Calibrated Source Screening for Cross-Session Motor-Imagery EEG"
+type: software
+authors:
+  - family-names: Shen
+    given-names: Yiming
+  - family-names: Degras
+    given-names: David
+license: MIT
+references:
+  - type: article
+    title: "A confidence-gated source selection strategy for cross-session transfer in brain-computer interfaces"
+    authors:
+      - family-names: Shen
+        given-names: Yiming
+      - family-names: Degras
+        given-names: David
+    journal: "Frontiers in Human Neuroscience"
+    volume: "20"
+    year: 2026
+    doi: "10.3389/fnhum.2026.1895016"

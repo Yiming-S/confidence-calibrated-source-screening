@@ -1,0 +1,35 @@
+{
+  "ma2020": {
+    "n_subjects": 25,
+    "mean_diff": 0.0014666666666666873,
+    "ci95_low": -0.028306138181849752,
+    "ci95_high": 0.03123947151518313,
+    "delta_NI": 0.02,
+    "noninferior_at_delta": false,
+    "p_noninferiority_ttest": 0.07487311047563168,
+    "p_noninferiority_wilcoxon": 0.060896972285628626,
+    "frac_subjects_within_margin": 0.64
+  },
+  "stieger2021": {
+    "n_subjects": 62,
+    "mean_diff": -0.004769497850991891,
+    "ci95_low": -0.017374913324433378,
+    "ci95_high": 0.007835917622449597,
+    "delta_NI": 0.02,
+    "noninferior_at_delta": true,
+    "p_noninferiority_ttest": 0.009349437635079075,
+    "p_noninferiority_wilcoxon": 0.008816204430010811,
+    "frac_subjects_within_margin": 0.6451612903225806
+  },
+  "zhou2020": {
+    "n_subjects": 20,
+    "mean_diff": -0.0022986111111111375,
+    "ci95_low": -0.019439345798168854,
+    "ci95_high": 0.01484212357594658,
+    "delta_NI": 0.02,
+    "noninferior_at_delta": true,
+    "p_noninferiority_ttest": 0.021815275366185036,
+    "p_noninferiority_wilcoxon": 0.0412750244140625,
+    "frac_subjects_within_margin": 0.65
+  }
+}

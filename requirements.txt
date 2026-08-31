@@ -1,0 +1,11 @@
+# Complete analysis environment used by the public entry points.
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3
+scikit-learn==1.7.2
+mne==1.11.0
+moabb==1.4.3
+joblib==1.5.3
+matplotlib==3.10.8
+seaborn==0.13.2
+tabulate==0.10.0

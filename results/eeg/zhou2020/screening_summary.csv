@@ -1,0 +1,2 @@
+subjects,mean_n_sources,mean_n_channels,mean_target_trials,rect_size,pair_ref_size,pair_ref_fraction,mcs_size,wrong_target_pair_ref_size,pair_ref_smaller_than_rect_subjects
+20,5.95,35.0,121.9,2.7,2.55,0.4266666666666666,2.0,2.55,3

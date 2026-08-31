@@ -1,0 +1,6 @@
+quantity,mean,std,min,median,max,shrink_subjects_vs_rect
+Rect. split,9.72,4.335127833563082,2,12.0,14,0
+Pair/Ref split,7.6,4.4628092796652945,1,8.0,14,21
+Ref. combined,7.64,4.4335839528159005,1,8.0,14,21
+Rect. combined,9.28,4.57820925690384,1,11.0,14,8
+Wrong-target ref.,8.36,4.759901959774662,1,9.0,14,17
