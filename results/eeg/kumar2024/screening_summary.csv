@@ -1,0 +1,6 @@
+method,subjects,mean_set_size,mean_training_trials
+all_sources,18,5.0,293.94444444444446
+mcs_stepdown,18,3.0,165.66666666666666
+pair_ref,18,3.4444444444444446,189.0
+top1,18,1.0,51.5
+top3,18,3.0,167.38888888888889

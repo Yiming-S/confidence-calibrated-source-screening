@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Supervised target-only references for the two covariance-space case studies.
+"""Classifier-matched supervised target-only references.
 
 The screening methods use target covariates but not target labels.  This script
 uses the labelled screening half of each target session to fit the same
@@ -18,11 +18,9 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.metrics import balanced_accuracy_score
 from sklearn.model_selection import StratifiedShuffleSplit
 
-from ci_gate_ma2020_riemann import riemann_mean, shrink, tangent_features
+from ci_gate_ma2020_riemann import train_eval_ts
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -42,13 +40,14 @@ def train_eval_target_only(
     test_covs: np.ndarray,
     test_labels: np.ndarray,
 ) -> float:
-    """Tangent-space LDA using the stable p-greater-than-n SVD solver."""
-    ref = riemann_mean(shrink(train_covs, 0.05))
-    x_train = tangent_features(shrink(train_covs, 0.05), ref)
-    x_test = tangent_features(shrink(test_covs, 0.05), ref)
-    classifier = LinearDiscriminantAnalysis(solver="svd")
-    classifier.fit(x_train, train_labels)
-    return float(balanced_accuracy_score(test_labels, classifier.predict(x_test)))
+    """Use the source pipeline unchanged, fitted only to target training trials.
+
+    The reference mean is estimated from the labeled target training half.
+    Trial covariances use shrinkage 0.05; LDA uses LSQR and automatic shrinkage.
+    Historical SVD results are archived separately and must not be mixed with
+    results produced by this classifier-matched helper.
+    """
+    return train_eval_ts(train_covs, train_labels, test_covs, test_labels)
 
 
 def target_path(dataset: str, cache_root: Path, subject: int) -> Path:
@@ -144,6 +143,54 @@ def comparison_table(target_by_subject: pd.DataFrame, dataset: str, root: Path) 
     return pd.DataFrame(rows)
 
 
+def write_latex_table(summary: pd.DataFrame, path: Path) -> None:
+    dataset_labels = {"ma2020": "Ma2020", "stieger": "Stieger2021"}
+    method_labels = {
+        "target_only": "Target only",
+        "all_sources": "All sources",
+        "top1": "Top-1",
+        "top3": "Top-3",
+        "pair_ref": "Ref.",
+    }
+    lines = [
+        r"\begin{table}[!htbp]",
+        r"\centering",
+        (
+            r"\caption{Supervised target-only reference.  Target only trains on the "
+            r"labelled screening half of the target session and tests on the held-out "
+            r"half. Both target-only and source-trained methods use the same "
+            r"tangent-space LSQR LDA pipeline with automatic shrinkage and trial-"
+            r"covariance shrinkage 0.05. Each reference mean is estimated only "
+            r"from that method's training data. Source-screening methods do not "
+            r"use target labels, so these are distinct training-data regimes. "
+            r"Below-target rate is computed from subject-level mean accuracies.}"
+        ),
+        r"\label{tab:target-only-reference}",
+        r"\WideTableBody",
+        r"\begin{tabular}{llccccc}",
+        r"\toprule",
+        (
+            r"Dataset & Method & \(n\) & \makecell{Bal.\\acc.} & \makecell{Diff. vs\\target} & "
+            r"\makecell{Below-target\\rate} & \makecell{Above\\target} \\"
+        ),
+        r"\midrule",
+    ]
+    for dataset in ["ma2020", "stieger"]:
+        block = summary[summary["dataset"] == dataset]
+        for index, row in enumerate(block.itertuples(index=False)):
+            dataset_cell = dataset_labels[dataset] if index == 0 else ""
+            lines.append(
+                f"{dataset_cell} & {method_labels[row.method]} & {row.subjects:d} & "
+                f"{row.mean_balanced_accuracy:.4f} & {row.mean_diff_vs_target_only:+.4f} & "
+                f"{row.below_target_only_rate:.2f} & {row.subjects_above_target_only:d} \\\\"
+            )
+        if dataset == "ma2020":
+            lines.append(r"\midrule")
+    lines.extend([r"\bottomrule", r"\end{tabular}", "", r"\end{table}"])
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ma-dir", type=Path, default=DEFAULT_MA)
@@ -155,6 +202,8 @@ def main() -> None:
     parser.add_argument("--stieger-seed", type=int, default=20260707)
     parser.add_argument("--jobs", type=int, default=4)
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--table-path", type=Path, default=None,
+                        help="comparison table path; defaults inside --out-dir")
     args = parser.parse_args()
 
     started = time.time()
@@ -188,6 +237,8 @@ def main() -> None:
         ignore_index=True,
     )
     summary.to_csv(args.out_dir / "target_only_comparison.csv", index=False)
+    table_path = args.table_path or args.out_dir / "table_target_only_reference.tex"
+    write_latex_table(summary, table_path)
     manifest = {
         "script": Path(__file__).name,
         "ma_dir": str(args.ma_dir),
@@ -196,7 +247,10 @@ def main() -> None:
         "ma_seed": args.ma_seed,
         "stieger_seed": args.stieger_seed,
         "jobs": args.jobs,
-        "classifier": "tangent-space LDA (SVD solver for p > n)",
+        "classifier": "tangent-space LDA (solver=lsqr, shrinkage=auto)",
+        "trial_covariance_shrinkage": 0.05,
+        "target_reference": "Riemannian mean of target training half only",
+        "table_path": str(table_path),
         "subjects": raw.groupby("dataset")["subject"].nunique().to_dict(),
         "runtime_seconds": round(time.time() - started, 1),
     }

@@ -22,6 +22,11 @@ DISCLOSURE = base64.b64decode(
     "ZW50Lg=="
 ).decode("utf-8")
 
+TOOL_DISCLOSURE = (
+    "Codex (OpenAI) and Claude (Anthropic) were used for language editing "
+    "and analysis-code development."
+)
+
 CORE_RESULTS = (
     "results/MANIFEST.csv",
     "results/SHA256SUMS",
@@ -30,17 +35,17 @@ CORE_RESULTS = (
     "results/simulations/straddle_summary.csv",
     "results/eeg/ma2020/screening_summary.csv",
     "results/eeg/stieger2021/screening_summary.csv",
-    "results/eeg/zhou2020/screening_summary.csv",
+    "results/eeg/kumar2024/screening_summary.csv",
     "results/eeg/bnci2014_004/screening_summary.csv",
     "results/eeg/noninferiority/summary.json",
     "results/figure_data/eeg_overview.csv",
     "figures/fig_shared_target_evidence.pdf",
     "figures/fig_eeg_overview.pdf",
-    "figures/fig_zhou2020_exclusion_certificate.pdf",
+    "figures/fig_kumar2024_exclusion_certificate.pdf",
 )
 
 FIGURE3_METADATA_CANDIDATES = (
-    "results/eeg/empirical_reference/manifest.json",
+    "results/eeg/kumar2024/supplemental/certificate.json",
 )
 
 SKIP_DIRECTORIES = {
@@ -178,6 +183,10 @@ class PublicRepositoryTests(unittest.TestCase):
         texts = public_text_files()
         occurrences = sum(text.count(DISCLOSURE) for _, text in texts)
         self.assertEqual(occurrences, 1, "The approved disclosure must appear exactly once")
+        tool_occurrences = sum(text.count(TOOL_DISCLOSURE) for _, text in texts)
+        self.assertEqual(tool_occurrences, 1, "The confirmed tool identification must appear exactly once")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn(DISCLOSURE + "\n\n" + TOOL_DISCLOSURE, readme)
 
         alternative_patterns = (
             re.compile(r"(?i)\b" + "A" + r"I[- ](?:assisted|generated|supported|tool|tools|use|disclosure|statement)\b"),
@@ -190,13 +199,15 @@ class PublicRepositoryTests(unittest.TestCase):
                 + "A"
                 + r"I|Code"
                 + r"x|GPT[- ]?[0-9]+|large language "
-                + r"model|LLM)\b"
+                + r"model|LLM|Claude|Anthropic)\b"
             ),
         )
 
         violations: list[str] = []
         for path, text in texts:
             remainder = text.replace(DISCLOSURE, "")
+            if path == Path("README.md"):
+                remainder = remainder.replace(TOOL_DISCLOSURE, "")
             for pattern in alternative_patterns:
                 match = pattern.search(remainder)
                 if match:
@@ -227,29 +238,15 @@ class PublicRepositoryTests(unittest.TestCase):
 
         self.assertFalse(failures, "Python compilation failures:\n" + "\n".join(failures))
 
-    def test_figure3_is_documented_as_an_archived_output(self) -> None:
-        root_readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        figure_readme = (ROOT / "figures" / "README.md").read_text(encoding="utf-8")
-
-        self.assertRegex(root_readme, r"Zhou2020\s+exclusion\s+certificate")
-        self.assertIn("archived output", root_readme.lower())
-        self.assertIn("fig_zhou2020_exclusion_certificate.pdf", figure_readme)
-        self.assertIn("archived output", figure_readme.lower())
-
-        pdf = ROOT / "figures" / "fig_zhou2020_exclusion_certificate.pdf"
+    def test_figure3_has_reconstructable_bounds(self) -> None:
+        figure_readme = (ROOT / "figures/README.md").read_text(encoding="utf-8")
+        self.assertIn("fig_kumar2024_exclusion_certificate.pdf", figure_readme)
+        pdf = ROOT / "figures/fig_kumar2024_exclusion_certificate.pdf"
         self.assertTrue(pdf.read_bytes().startswith(b"%PDF-"))
-
-        metadata_path = next(
-            ROOT / name
-            for name in FIGURE3_METADATA_CANDIDATES
-            if (ROOT / name).is_file()
-        )
-        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-        certificate = metadata.get("certificate")
-        self.assertIsInstance(certificate, dict)
-        self.assertGreater(float(certificate["threshold"]), 0.0)
-        self.assertGreater(int(certificate["bootstrap_repetitions"]), 0)
-        self.assertTrue(set(certificate["retained_sessions"]).issubset(certificate["source_sessions"]))
+        metadata = json.loads((ROOT / FIGURE3_METADATA_CANDIDATES[0]).read_text())
+        self.assertEqual(metadata["bootstrap"], 1999)
+        self.assertEqual(len(metadata["sources"]), 5)
+        self.assertEqual(len(metadata["system"]["lower_d"]), 20)
 
 
 if __name__ == "__main__":

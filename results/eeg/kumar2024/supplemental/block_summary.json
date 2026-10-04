@@ -1,0 +1,708 @@
+{
+  "all_source_accuracy": 0.6792384621551287,
+  "downstream": [
+    {
+      "block_length": 1,
+      "dataset": "kumar2024",
+      "mean_balanced_accuracy": 0.7016967908634576,
+      "mean_diff_vs_all": 0.022458328708328715,
+      "mean_set_size": 3.222222222222222,
+      "method": "mcs_stepdown",
+      "subjects": 18
+    },
+    {
+      "block_length": 1,
+      "dataset": "kumar2024",
+      "mean_balanced_accuracy": 0.7112162682996017,
+      "mean_diff_vs_all": 0.0319778061444728,
+      "mean_set_size": 3.5277777777777777,
+      "method": "pair_ref",
+      "subjects": 18
+    },
+    {
+      "block_length": 4,
+      "dataset": "kumar2024",
+      "mean_balanced_accuracy": 0.7038065175565176,
+      "mean_diff_vs_all": 0.024568055401388733,
+      "mean_set_size": 3.3833333333333333,
+      "method": "mcs_stepdown",
+      "subjects": 18
+    },
+    {
+      "block_length": 4,
+      "dataset": "kumar2024",
+      "mean_balanced_accuracy": 0.7052658606825273,
+      "mean_diff_vs_all": 0.02602739852739853,
+      "mean_set_size": 3.7666666666666666,
+      "method": "pair_ref",
+      "subjects": 18
+    }
+  ],
+  "screening": [
+    {
+      "block_length": 1,
+      "dataset": "kumar2024",
+      "exact_match_iid": 1.0,
+      "jaccard_vs_iid": 1.0,
+      "mcs_size": 3.0,
+      "mean_sources": 5.0,
+      "pair_ref_fraction": 0.6888888888888889,
+      "pair_ref_size": 3.4444444444444446,
+      "subjects": 18
+    },
+    {
+      "block_length": 4,
+      "dataset": "kumar2024",
+      "exact_match_iid": 0.7222222222222222,
+      "jaccard_vs_iid": 0.9370370370370371,
+      "mcs_size": 3.2222222222222223,
+      "mean_sources": 5.0,
+      "pair_ref_fraction": 0.7222222222222222,
+      "pair_ref_size": 3.611111111111111,
+      "subjects": 18
+    },
+    {
+      "block_length": 8,
+      "dataset": "kumar2024",
+      "exact_match_iid": 0.5555555555555556,
+      "jaccard_vs_iid": 0.8583333333333333,
+      "mcs_size": 3.611111111111111,
+      "mean_sources": 5.0,
+      "pair_ref_fraction": 0.7777777777777778,
+      "pair_ref_size": 3.888888888888889,
+      "subjects": 18
+    }
+  ],
+  "subject_downstream": [
+    {
+      "balanced_accuracy": 0.5183333333333333,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 1
+    },
+    {
+      "balanced_accuracy": 0.5494444444444444,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.3,
+      "subject": 1
+    },
+    {
+      "balanced_accuracy": 0.5494444444444444,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 4.3,
+      "subject": 1
+    },
+    {
+      "balanced_accuracy": 0.5583333333333333,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 4.4,
+      "subject": 1
+    },
+    {
+      "balanced_accuracy": 0.5361111111111111,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.6,
+      "subject": 1
+    },
+    {
+      "balanced_accuracy": 0.7341880341880341,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 2
+    },
+    {
+      "balanced_accuracy": 0.8098290598290598,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 1.1,
+      "subject": 2
+    },
+    {
+      "balanced_accuracy": 0.8576923076923076,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 1.9,
+      "subject": 2
+    },
+    {
+      "balanced_accuracy": 0.8576923076923076,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 1.8,
+      "subject": 2
+    },
+    {
+      "balanced_accuracy": 0.8538461538461538,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 2.0,
+      "subject": 2
+    },
+    {
+      "balanced_accuracy": 0.4833333333333333,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 3
+    },
+    {
+      "balanced_accuracy": 0.5416666666666666,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.1,
+      "subject": 3
+    },
+    {
+      "balanced_accuracy": 0.5416666666666666,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 4.1,
+      "subject": 3
+    },
+    {
+      "balanced_accuracy": 0.5375,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 4.3,
+      "subject": 3
+    },
+    {
+      "balanced_accuracy": 0.5166666666666666,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.3,
+      "subject": 3
+    },
+    {
+      "balanced_accuracy": 0.8185606060606061,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 4
+    },
+    {
+      "balanced_accuracy": 0.775,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 1.7,
+      "subject": 4
+    },
+    {
+      "balanced_accuracy": 0.7867424242424242,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 2.7,
+      "subject": 4
+    },
+    {
+      "balanced_accuracy": 0.7992424242424242,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 2.9,
+      "subject": 4
+    },
+    {
+      "balanced_accuracy": 0.8178030303030303,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 3.9,
+      "subject": 4
+    },
+    {
+      "balanced_accuracy": 0.6762626262626263,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 5
+    },
+    {
+      "balanced_accuracy": 0.706060606060606,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 2.0,
+      "subject": 5
+    },
+    {
+      "balanced_accuracy": 0.706060606060606,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 2.0,
+      "subject": 5
+    },
+    {
+      "balanced_accuracy": 0.706060606060606,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 2.0,
+      "subject": 5
+    },
+    {
+      "balanced_accuracy": 0.705050505050505,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 2.1,
+      "subject": 5
+    },
+    {
+      "balanced_accuracy": 0.4621212121212121,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 6
+    },
+    {
+      "balanced_accuracy": 0.5492424242424242,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 1.0,
+      "subject": 6
+    },
+    {
+      "balanced_accuracy": 0.5393939393939393,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 1.2,
+      "subject": 6
+    },
+    {
+      "balanced_accuracy": 0.5492424242424242,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 1.0,
+      "subject": 6
+    },
+    {
+      "balanced_accuracy": 0.531439393939394,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 2.0,
+      "subject": 6
+    },
+    {
+      "balanced_accuracy": 0.7481934731934732,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 7
+    },
+    {
+      "balanced_accuracy": 0.8206876456876457,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 3.8,
+      "subject": 7
+    },
+    {
+      "balanced_accuracy": 0.8123543123543124,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 3.9,
+      "subject": 7
+    },
+    {
+      "balanced_accuracy": 0.8046037296037296,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 3.3,
+      "subject": 7
+    },
+    {
+      "balanced_accuracy": 0.8081876456876458,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.0,
+      "subject": 7
+    },
+    {
+      "balanced_accuracy": 0.7090909090909091,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 8
+    },
+    {
+      "balanced_accuracy": 0.7045454545454546,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.4,
+      "subject": 8
+    },
+    {
+      "balanced_accuracy": 0.7045454545454546,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 4.8,
+      "subject": 8
+    },
+    {
+      "balanced_accuracy": 0.7,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 4.1,
+      "subject": 8
+    },
+    {
+      "balanced_accuracy": 0.7045454545454546,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.8,
+      "subject": 8
+    },
+    {
+      "balanced_accuracy": 0.7416666666666666,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 9
+    },
+    {
+      "balanced_accuracy": 0.6833333333333333,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 2.4,
+      "subject": 9
+    },
+    {
+      "balanced_accuracy": 0.7999999999999999,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 3.2,
+      "subject": 9
+    },
+    {
+      "balanced_accuracy": 0.7,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 2.5,
+      "subject": 9
+    },
+    {
+      "balanced_accuracy": 0.7999999999999999,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 3.2,
+      "subject": 9
+    },
+    {
+      "balanced_accuracy": 0.714010989010989,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 10
+    },
+    {
+      "balanced_accuracy": 0.6887362637362637,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.5,
+      "subject": 10
+    },
+    {
+      "balanced_accuracy": 0.714010989010989,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 5.0,
+      "subject": 10
+    },
+    {
+      "balanced_accuracy": 0.714010989010989,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 5.0,
+      "subject": 10
+    },
+    {
+      "balanced_accuracy": 0.714010989010989,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 5.0,
+      "subject": 10
+    },
+    {
+      "balanced_accuracy": 0.9400000000000001,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 11
+    },
+    {
+      "balanced_accuracy": 0.9166666666666666,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 2.2,
+      "subject": 11
+    },
+    {
+      "balanced_accuracy": 0.9099999999999999,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 2.7,
+      "subject": 11
+    },
+    {
+      "balanced_accuracy": 0.9199999999999999,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 2.3,
+      "subject": 11
+    },
+    {
+      "balanced_accuracy": 0.9,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 3.1,
+      "subject": 11
+    },
+    {
+      "balanced_accuracy": 0.7546153846153846,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 12
+    },
+    {
+      "balanced_accuracy": 0.6576923076923077,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 3.6,
+      "subject": 12
+    },
+    {
+      "balanced_accuracy": 0.6497435897435897,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 3.9,
+      "subject": 12
+    },
+    {
+      "balanced_accuracy": 0.6753846153846154,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 3.9,
+      "subject": 12
+    },
+    {
+      "balanced_accuracy": 0.6607692307692308,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.2,
+      "subject": 12
+    },
+    {
+      "balanced_accuracy": 0.6464285714285715,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 13
+    },
+    {
+      "balanced_accuracy": 0.6821428571428572,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.2,
+      "subject": 13
+    },
+    {
+      "balanced_accuracy": 0.6857142857142857,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 4.1,
+      "subject": 13
+    },
+    {
+      "balanced_accuracy": 0.6678571428571429,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 4.6,
+      "subject": 13
+    },
+    {
+      "balanced_accuracy": 0.6607142857142858,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.8,
+      "subject": 13
+    },
+    {
+      "balanced_accuracy": 0.4066666666666666,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 14
+    },
+    {
+      "balanced_accuracy": 0.44333333333333336,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 3.3,
+      "subject": 14
+    },
+    {
+      "balanced_accuracy": 0.44333333333333336,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 3.4,
+      "subject": 14
+    },
+    {
+      "balanced_accuracy": 0.4333333333333334,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 3.5,
+      "subject": 14
+    },
+    {
+      "balanced_accuracy": 0.41,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 3.9,
+      "subject": 14
+    },
+    {
+      "balanced_accuracy": 0.6011538461538461,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 15
+    },
+    {
+      "balanced_accuracy": 0.671923076923077,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 2.4,
+      "subject": 15
+    },
+    {
+      "balanced_accuracy": 0.65,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 2.8,
+      "subject": 15
+    },
+    {
+      "balanced_accuracy": 0.671923076923077,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 2.4,
+      "subject": 15
+    },
+    {
+      "balanced_accuracy": 0.6523076923076923,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 2.6,
+      "subject": 15
+    },
+    {
+      "balanced_accuracy": 0.7566666666666666,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 16
+    },
+    {
+      "balanced_accuracy": 0.7552380952380953,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.6,
+      "subject": 16
+    },
+    {
+      "balanced_accuracy": 0.7595238095238095,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 4.8,
+      "subject": 16
+    },
+    {
+      "balanced_accuracy": 0.7566666666666666,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 5.0,
+      "subject": 16
+    },
+    {
+      "balanced_accuracy": 0.7566666666666666,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 5.0,
+      "subject": 16
+    },
+    {
+      "balanced_accuracy": 0.7066666666666667,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 17
+    },
+    {
+      "balanced_accuracy": 0.8416666666666666,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.0,
+      "subject": 17
+    },
+    {
+      "balanced_accuracy": 0.8416666666666666,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 4.0,
+      "subject": 17
+    },
+    {
+      "balanced_accuracy": 0.8416666666666666,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 4.0,
+      "subject": 17
+    },
+    {
+      "balanced_accuracy": 0.8416666666666666,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.0,
+      "subject": 17
+    },
+    {
+      "balanced_accuracy": 0.8083333333333332,
+      "block_length": 0,
+      "method": "all_sources",
+      "set_size": 5.0,
+      "subject": 18
+    },
+    {
+      "balanced_accuracy": 0.8333333333333333,
+      "block_length": 1,
+      "method": "mcs_stepdown",
+      "set_size": 4.4,
+      "subject": 18
+    },
+    {
+      "balanced_accuracy": 0.85,
+      "block_length": 1,
+      "method": "pair_ref",
+      "set_size": 4.7,
+      "subject": 18
+    },
+    {
+      "balanced_accuracy": 0.775,
+      "block_length": 4,
+      "method": "mcs_stepdown",
+      "set_size": 3.9,
+      "subject": 18
+    },
+    {
+      "balanced_accuracy": 0.825,
+      "block_length": 4,
+      "method": "pair_ref",
+      "set_size": 4.3,
+      "subject": 18
+    }
+  ]
+}

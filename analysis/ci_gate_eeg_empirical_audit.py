@@ -5,9 +5,8 @@ The full BNCI2014_004 and Zhou2020 session empirical distributions define
 finite pseudo-populations.  Outer samples are drawn independently from each
 empirical source distribution and once from the empirical target distribution.
 The CI-gate is then recalibrated inside every outer sample with a shared-target
-bootstrap.  BNCI2014_004 supplies a low-dimensional simultaneous-coverage
-audit, while Zhou2020 supplies a higher-channel stability and bootstrap-budget
-audit under the main longitudinal protocol.
+bootstrap.  Both datasets supply simultaneous-coverage and retained-set
+stability audits; Zhou2020 also supplies the bootstrap-budget audit.
 """
 
 from __future__ import annotations
@@ -362,6 +361,112 @@ def make_certificate_figure(
     }
 
 
+AUDIT_METRICS = (
+    "coverage_c", "coverage_d", "coverage_joint", "oracle_retained",
+    "exact_recovery", "set_size",
+)
+
+
+def summarize_empirical_audit(
+    dataset: str,
+    raw: pd.DataFrame,
+    by_subject: pd.DataFrame,
+    stability: pd.DataFrame,
+    subjects: list[int],
+    outer_per_subject: int,
+) -> dict:
+    """Validate released records before pooling equally replicated subjects."""
+    required = {"subject", "replicate", "n_sources", *AUDIT_METRICS}
+    if not required.issubset(raw.columns):
+        raise ValueError(f"{dataset}: raw audit is missing required columns")
+    expected_index = pd.MultiIndex.from_product(
+        [sorted(subjects), range(outer_per_subject)], names=["subject", "replicate"]
+    )
+    observed_index = pd.MultiIndex.from_frame(raw[["subject", "replicate"]])
+    if observed_index.has_duplicates or not observed_index.sort_values().equals(expected_index):
+        raise ValueError(f"{dataset}: subjects or outer replicate IDs do not match the manifest")
+    for column in AUDIT_METRICS[:-1]:
+        if not raw[column].isin([0, 1]).all():
+            raise ValueError(f"{dataset}: {column} must contain binary indicators")
+    if not np.array_equal(
+        raw["coverage_joint"], raw["coverage_c"] * raw["coverage_d"]
+    ):
+        raise ValueError(f"{dataset}: joint event differs from the event intersection")
+    if not raw["set_size"].between(1, raw["n_sources"]).all():
+        raise ValueError(f"{dataset}: retained-set size is outside the source count")
+    recomputed = raw.groupby("subject").mean(numeric_only=True).sort_index()
+    if "subject" not in by_subject or by_subject["subject"].duplicated().any():
+        raise ValueError(f"{dataset}: invalid by-subject summary IDs")
+    recorded = by_subject.set_index("subject").sort_index()
+    if not recorded.index.equals(recomputed.index) or not set(recomputed).issubset(recorded):
+        raise ValueError(f"{dataset}: by-subject summary is incomplete")
+    if not np.allclose(
+        recomputed.to_numpy(), recorded[recomputed.columns].to_numpy(), rtol=0, atol=1e-12
+    ):
+        raise ValueError(f"{dataset}: by-subject summary differs from raw records")
+    if not {"subject", "n_sources", "mean_pairwise_jaccard"}.issubset(stability):
+        raise ValueError(f"{dataset}: stability summary is incomplete")
+    stable = stability.set_index("subject").sort_index()
+    if stable.index.has_duplicates or not stable.index.equals(recomputed.index):
+        raise ValueError(f"{dataset}: stability subject IDs differ from raw records")
+    if not np.array_equal(stable["n_sources"], recomputed["n_sources"]):
+        raise ValueError(f"{dataset}: stability source counts differ from raw records")
+    if not stable["mean_pairwise_jaccard"].between(0, 1).all():
+        raise ValueError(f"{dataset}: Jaccard summary is outside [0, 1]")
+    return {
+        "dataset": dataset,
+        "subjects": len(subjects),
+        "outer_per_subject": outer_per_subject,
+        "outer_total": len(raw),
+        **{metric: float(raw[metric].mean()) for metric in AUDIT_METRICS},
+        "jaccard": float(stable["mean_pairwise_jaccard"].mean()),
+    }
+
+
+def write_empirical_coverage_table(out_dir: Path, paper_tables: Path) -> None:
+    """Rebuild only the coverage table from both saved audits, without resampling."""
+    manifest = json.loads((out_dir / "manifest.json").read_text())
+    datasets = (
+        ("Zhou2020", "", manifest["subjects"], manifest["outer_samples_per_subject"]),
+        ("BNCI2014_004", "bnci_", list(range(1, 10)), manifest["bnci_outer_samples_per_subject"]),
+    )
+    rows = []
+    for dataset, prefix, subjects, count in datasets:
+        summary = summarize_empirical_audit(
+            dataset,
+            pd.read_csv(out_dir / f"{prefix}empirical_audit_raw.csv"),
+            pd.read_csv(out_dir / f"{prefix}empirical_audit_by_subject.csv"),
+            pd.read_csv(out_dir / f"{prefix}subject_stability.csv"),
+            subjects,
+            count,
+        )
+        name = dataset.replace("_", r"\_")
+        rows.append(
+            f"{name} & {summary['subjects']} & {summary['outer_total']} ({count}) & "
+            + " & ".join(f"{summary[metric]:.3f}" for metric in AUDIT_METRICS[:-1])
+            + f" & {summary['set_size']:.2f} & {summary['jaccard']:.3f} \\\\"
+        )
+    nominal_c = 100 * (1 - manifest["alpha_component"])
+    nominal_d = 100 * (1 - manifest["alpha_contrast"])
+    nominal_joint = 100 * (1 - manifest["alpha_component"] - manifest["alpha_contrast"])
+    audit_tex = rf"""\begin{{table}}[t]
+\centering
+\caption{{Empirical-reference coverage and retained-set stability in both EEG cohorts. Full-session empirical distributions define the pseudo-population discrepancies. Outer draws use {100 * manifest['outer_source_sample_fraction']:g}\% of the observed source-session trial counts and {100 * manifest['outer_target_sample_fraction']:g}\% of the target-session trial count, with replacement. Outer-sample totals are followed by per-subject counts in parentheses. Every draw is recalibrated with a {manifest['bootstrap_repetitions']}-repetition shared-target bootstrap. The nominal component, contrast, and split joint coverage levels are {nominal_c:g}\%, {nominal_d:g}\%, and {nominal_joint:g}\%, respectively. Oracle retention and exact recovery refer to the empirical-reference argmin set. Set size is averaged over outer samples; Jaccard is the subject-averaged pairwise overlap of retained sets.}}
+\label{{tab:eeg-empirical-audit}}
+\WideTableBody
+\begin{{tabular}}{{@{{}}lrrrrrrrrr@{{}}}}
+\toprule
+Dataset & Subjects & \makecell{{Outer\\samples}} & $\Pr(\mathcal E_C)$ & $\Pr(\mathcal E_D)$ & Joint & \makecell{{Oracle\\retained}} & Exact & \makecell{{Set\\size}} & Jaccard \\
+\midrule
+""" + "\n".join(rows) + r"""
+\bottomrule
+\end{tabular}
+\end{table}
+"""
+    paper_tables.mkdir(parents=True, exist_ok=True)
+    (paper_tables / "table_eeg_empirical_audit.tex").write_text(audit_tex)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cache-root", type=Path, default=None,
@@ -369,6 +474,14 @@ def main() -> None:
     parser.add_argument("--bnci-cache-root", type=Path, default=None,
                         help="BNCI covariance cache; defaults to the repository result cache.")
     parser.add_argument("--out-dir", type=Path, default=DEFAULT_OUT)
+    parser.add_argument(
+        "--tables-only", action="store_true",
+        help="Validate a full saved Zhou and BNCI audit and rebuild its coverage table without rerunning experiments; requires local outer records and stability summaries.",
+    )
+    parser.add_argument(
+        "--table-output-dir", type=Path, default=None,
+        help="coverage table directory; defaults to tables inside --out-dir",
+    )
     parser.add_argument("--subjects", default="1-20")
     parser.add_argument("--mc", type=int, default=50)
     parser.add_argument("--bnci-mc", type=int, default=200)
@@ -393,6 +506,9 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=20260716)
     parser.add_argument("--jobs", type=int, default=4)
     args = parser.parse_args()
+    if args.tables_only:
+        write_empirical_coverage_table(args.out_dir, args.table_output_dir or args.out_dir / "tables")
+        return
     args.cache_root = resolve_cache_root(
         args.cache_root,
         parser,
@@ -509,6 +625,7 @@ def main() -> None:
         "runtime_seconds": round(time.time() - start, 1),
     }
     (args.out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    write_empirical_coverage_table(args.out_dir, args.table_output_dir or args.out_dir / "tables")
 
 
 if __name__ == "__main__":

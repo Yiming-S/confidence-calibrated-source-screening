@@ -1,10 +1,21 @@
 # Archived main-result figures
 
-- `fig_shared_target_evidence.pdf` and `fig_eeg_overview.pdf` can be rebuilt
-  from the compact files under `results/figure_data/`.
-- `fig_zhou2020_exclusion_certificate.pdf` is an archived output. Its
-  metadata are public, but its interval endpoints require the source EEG and
-  covariance calculations and are not reconstructed from aggregate data.
+The current manuscript order is:
 
-Run `make figures` to rebuild the first two files under `build/figures/`
-without modifying the archived copies in this directory.
+1. `fig_eeg_overview.pdf`: four-cohort source retention and decoding results.
+2. `fig_kumar2024_exclusion_certificate.pdf`: source-specific exclusion evidence.
+3. `fig_shared_target_evidence.pdf`: shared-target calibration experiments.
+
+The archived PDFs match the manuscript revision dated 2026-10-03. Use these
+filenames, rather than older console figure numbers, to identify the outputs.
+
+- `fig_shared_target_evidence.pdf` can be rebuilt from `results/simulations/`;
+  `fig_eeg_overview.pdf` can be rebuilt from `results/figure_data/` and its
+  underlying subject summaries.
+- `fig_kumar2024_exclusion_certificate.pdf` can be rebuilt from the released
+  interval endpoints and exclusion comparisons in
+  `results/eeg/kumar2024/supplemental/certificate.json`. Recalculating those
+  endpoints requires the original EEG preprocessing and bootstrap analysis.
+
+Run `make figures` to rebuild all three figures under `build/figures/`, without modifying
+the archived copies in this directory.

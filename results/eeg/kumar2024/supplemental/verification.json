@@ -1,0 +1,16 @@
+{
+  "checks": "All output hashes; every archived draw recalibrated; source sets, exclusion certificates, raw SE diagnostics, subject-level aggregation and paired means checked. Exact numerical replay: certificate subject1, budget subject1/split0/seed2026100201, block subject1/split0 lengths1/4 and all five downstream model results.",
+  "counts": {
+    "block_downstream_rows": 900,
+    "block_draw_arrays": 414,
+    "block_screening_rows": 54,
+    "block_subjects": 18,
+    "budget_draw_arrays": 18,
+    "budget_rows": 72,
+    "certificate_sources": 5
+  },
+  "plan_sha256": "7de82abe04355f0f633e12dc923a93b0bf1610379c6bf3a875c87ee051058ef4",
+  "status": "passed",
+  "verified_utc": "2026-10-03T03:51:11.107072+00:00",
+  "verifier_sha256": "28f029c5499692fd615ca244f1ed983972ce6b74f4b3db8547d8bb03cd42573f"
+}

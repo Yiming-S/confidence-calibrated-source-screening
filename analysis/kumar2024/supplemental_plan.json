@@ -1,0 +1,35 @@
+{
+  "analysis_role": "Post-outcome exploratory supplementary analyses; fixed before computing these supplementary results, not part of the original primary plan.",
+  "cohort": "Kumar2024",
+  "protocol_sha256": "d33e859a359cbdf4a6debc15594eae1fee7fec5edad4ca802eecbef6aeb853bc",
+  "source_sessions": [1, 2, 3, 4, 5],
+  "target_session": 6,
+  "shrinkage": 0.1,
+  "alpha": 0.05,
+  "alpha_c": 0.025,
+  "alpha_d": 0.025,
+  "classifier": "Unchanged frozen train_eval_ts, shrinkage 0.05, training-only reference, LSQR LDA with automatic shrinkage.",
+  "split_seed_base": 20260714,
+  "certificate": {"subject": 1, "bootstrap": 1999, "seed": 2026100200, "sample": "Full target; no search for an illustrative subject or seed."},
+  "budget": {
+    "subjects": [1, 2, 3], "splits": [0, 1], "bootstrap_seeds": [2026100201, 2026100202, 2026100203],
+    "budgets": [99, 199, 499, 999], "dataset_seed_id": 4,
+    "seed_rule": "numpy SeedSequence([bootstrap_seed, 4, subject, split]); one 999-row array; all budgets use nested prefixes and recompute studentizers and critical values.",
+    "methodology": "Original ci_gate_bspc_bootstrap_budget.discrepancy_bootstrap and calibrate; independent cache adapter only.",
+    "interpretation": "Numerical sensitivity only; selected-set stability does not validate simultaneous coverage."
+  },
+  "block": {
+    "subjects": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    "full_target_lengths": [1, 4, 8], "full_target_bootstrap": 499,
+    "downstream_lengths": [1, 4], "downstream_bootstrap": 99, "downstream_splits": 10,
+    "bootstrap_seed_base": 20260715,
+    "full_seed_rule": "20260715 + subject*100000 + block_length*1000",
+    "downstream_seed_rule": "20260715 + subject*1000000 + split*10000 + block_length*100",
+    "methods": ["all_sources", "pair_ref", "mcs_stepdown"],
+    "methodology": "Original ci_gate_block_bootstrap_sensitivity.riemann_estimates_and_block_bootstrap; common target resample across sources. First 10 primary half-splits, sorting screening indices back into cached recording order before resampling.",
+    "ordering_limitation": "Ordered covariance arrays concatenate bar-task runs and omit short trials. Random half-split screening arrays omit additional trials. Circular blocks preserve order in these arrays, not uninterrupted physical time; blocks can cross gaps and run boundaries. This is a dependence sensitivity analysis, not validation of stationary time-series assumptions or coverage."
+  },
+  "aggregation": "Average seeds and splits within subject before equal subject averaging. All subjects and all fixed cases retained regardless of outcomes.",
+  "prohibited": "No outcome-dependent subject, split, seed, source or model changes. No extra five-subject bootstrap-budget audit.",
+  "resources": {"maximum_workers": 4, "numerical_threads_per_worker": 1, "nice": 10, "gpu": false}
+}

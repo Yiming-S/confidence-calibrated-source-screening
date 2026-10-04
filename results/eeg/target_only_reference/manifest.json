@@ -1,0 +1,412 @@
+{
+  "script": "ci_gate_target_only_reference.py",
+  "classifier": "tangent-space LDA (solver=lsqr, shrinkage=auto)",
+  "trial_covariance_shrinkage": 0.05,
+  "target_reference": "Riemannian mean of target training half only",
+  "source_helper": "ci_gate_ma2020_riemann.train_eval_ts",
+  "subjects": {
+    "ma2020": 25,
+    "stieger": 62
+  },
+  "splits": 30,
+  "ma_seed": 20260618,
+  "stieger_seed": 20260707,
+  "statistical_unit": "subject",
+  "training_regime": "Target-only uses labelled target training halves; source-trained methods do not use target labels.",
+  "correction_runs": {
+    "latest": {
+      "classifier": {
+        "classifier": "tangent-space LDA (solver=lsqr, shrinkage=auto)",
+        "trial_covariance_shrinkage": 0.05,
+        "reference": "Riemannian mean of target training half only",
+        "source_helper": "ci_gate_ma2020_riemann.train_eval_ts"
+      },
+      "protocol": {
+        "subjects": {
+          "ma2020": 25,
+          "stieger": 62
+        },
+        "splits": 30,
+        "ma_seed": 20260618,
+        "stieger_seed": 20260707
+      },
+      "numerical_environment": {
+        "python": "3.13.9",
+        "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+        "packages": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.5.0"
+        },
+        "distribution_versions": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.6.0"
+        },
+        "package_version_source": "imported module __version__",
+        "pyriemann_used": false,
+        "numerical_threads_per_worker": 1,
+        "source_helper_function_sha256": "7b510c65c0d4a9c4b7e4f2fb25f02d06959b17dc910ef47a96e4530c7b92056d",
+        "target_helper_function_sha256": "296233287eb6b43c5d28eb09b269f34ac11b1c90634b496729ed6dc46d6ed924",
+        "captured_during_run_utc": "2026-10-02T23:06:34.901052+00:00",
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "version_audit_note": "Initial capture used installed-distribution metadata. Imported module versions were checked during this same rerun; the original capture timestamp is retained.",
+        "version_audit_utc": "2026-10-02T23:10:18.901620+00:00"
+      },
+      "correction": {
+        "script": "rerun_matched_target_only.py",
+        "date": "2026-10-02",
+        "status": "complete",
+        "schema_version": 1,
+        "rows": 2610,
+        "non_target_raw_rows_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "source_screening_and_fits_rerun": false,
+        "first_split_svd_parity_checks": 87,
+        "non_target_source_aggregates_unchanged": true,
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "helper_layout_provenance": {
+          "file_sha256": [
+            "6e342047070d50c4427cb3ed0e939705ab9571bcbbef19a726def9ded1231248",
+            "b0b235917931a93d379f99c852dcc363819dc5c08cfdcefbd4760171dba868a7"
+          ],
+          "difference": "Only LaTeX float placement and wrapped table headings changed",
+          "all_non_table_functions_ast_identical": true
+        },
+        "numerical_functions_verified_at_publication": true
+      }
+    },
+    "zhou": {
+      "classifier": {
+        "classifier": "tangent-space LDA (solver=lsqr, shrinkage=auto)",
+        "trial_covariance_shrinkage": 0.05,
+        "reference": "Riemannian mean of target training half only",
+        "source_helper": "ci_gate_ma2020_riemann.train_eval_ts"
+      },
+      "protocol": {
+        "subjects": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20
+        ],
+        "splits": 30,
+        "seed": 20260714,
+        "primary_target": "latest available session",
+        "source_sessions": "all earlier available sessions",
+        "classes": [
+          "left_hand",
+          "right_hand"
+        ],
+        "subject_channel_counts": {
+          "1-12": 41,
+          "13-20": 26
+        },
+        "filter_hz": [
+          8.0,
+          30.0
+        ],
+        "epoch_seconds": [
+          0.0,
+          5.0
+        ],
+        "covariance_shrinkage": 0.1
+      },
+      "numerical_environment": {
+        "python": "3.13.9",
+        "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+        "packages": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.5.0"
+        },
+        "distribution_versions": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.6.0"
+        },
+        "package_version_source": "imported module __version__",
+        "pyriemann_used": false,
+        "numerical_threads_per_worker": 1,
+        "source_helper_function_sha256": "7b510c65c0d4a9c4b7e4f2fb25f02d06959b17dc910ef47a96e4530c7b92056d",
+        "target_helper_function_sha256": "296233287eb6b43c5d28eb09b269f34ac11b1c90634b496729ed6dc46d6ed924",
+        "captured_during_run_utc": "2026-10-02T23:06:34.901052+00:00",
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "version_audit_note": "Initial capture used installed-distribution metadata. Imported module versions were checked during this same rerun; the original capture timestamp is retained.",
+        "version_audit_utc": "2026-10-02T23:10:18.901620+00:00"
+      },
+      "correction": {
+        "script": "rerun_matched_target_only.py",
+        "date": "2026-10-02",
+        "status": "complete",
+        "schema_version": 1,
+        "rows": 600,
+        "non_target_raw_rows_sha256": "8dd4948939a8e15eb5aeb1dcb986701f1e85281c5eab170c9a6b029660c5b9fd",
+        "source_screening_and_fits_rerun": false,
+        "first_split_svd_parity_checks": 20,
+        "non_target_source_aggregates_unchanged": true,
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "helper_layout_provenance": {
+          "file_sha256": [
+            "6e342047070d50c4427cb3ed0e939705ab9571bcbbef19a726def9ded1231248",
+            "b0b235917931a93d379f99c852dcc363819dc5c08cfdcefbd4760171dba868a7"
+          ],
+          "difference": "Only LaTeX float placement and wrapped table headings changed",
+          "all_non_table_functions_ast_identical": true
+        },
+        "numerical_functions_verified_at_publication": true
+      }
+    },
+    "bnci": {
+      "classifier": {
+        "classifier": "tangent-space LDA (solver=lsqr, shrinkage=auto)",
+        "trial_covariance_shrinkage": 0.05,
+        "reference": "Riemannian mean of target training half only",
+        "source_helper": "ci_gate_ma2020_riemann.train_eval_ts"
+      },
+      "protocol": {
+        "subjects": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "seed": 20260714,
+        "primary_target": 5,
+        "primary_splits": 30,
+        "rolling_splits": 10,
+        "rolling_targets": [
+          3,
+          4,
+          5
+        ],
+        "channels": [
+          "C3",
+          "Cz",
+          "C4"
+        ],
+        "session_mapping": {
+          "1": "01T",
+          "2": "02T",
+          "3": "03T",
+          "4": "04E",
+          "5": "05E"
+        },
+        "filter_hz": [
+          8.0,
+          30.0
+        ],
+        "epoch_seconds": [
+          3.0,
+          7.5
+        ],
+        "covariance_shrinkage": 0.1
+      },
+      "numerical_environment": {
+        "python": "3.13.9",
+        "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+        "packages": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.5.0"
+        },
+        "distribution_versions": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.6.0"
+        },
+        "package_version_source": "imported module __version__",
+        "pyriemann_used": false,
+        "numerical_threads_per_worker": 1,
+        "source_helper_function_sha256": "7b510c65c0d4a9c4b7e4f2fb25f02d06959b17dc910ef47a96e4530c7b92056d",
+        "target_helper_function_sha256": "296233287eb6b43c5d28eb09b269f34ac11b1c90634b496729ed6dc46d6ed924",
+        "captured_during_run_utc": "2026-10-02T23:06:34.901052+00:00",
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "version_audit_note": "Initial capture used installed-distribution metadata. Imported module versions were checked during this same rerun; the original capture timestamp is retained.",
+        "version_audit_utc": "2026-10-02T23:10:18.901620+00:00"
+      },
+      "correction": {
+        "script": "rerun_matched_target_only.py",
+        "date": "2026-10-02",
+        "status": "complete",
+        "schema_version": 1,
+        "rows": 450,
+        "non_target_raw_rows_sha256": "ccaf84acb66fbd7cee62a603aa45dc7a8a2487ad2d073c58ea62401c00a148b6",
+        "source_screening_and_fits_rerun": false,
+        "first_split_svd_parity_checks": 27,
+        "non_target_source_aggregates_unchanged": true,
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "helper_layout_provenance": {
+          "file_sha256": [
+            "6e342047070d50c4427cb3ed0e939705ab9571bcbbef19a726def9ded1231248",
+            "b0b235917931a93d379f99c852dcc363819dc5c08cfdcefbd4760171dba868a7"
+          ],
+          "difference": "Only LaTeX float placement and wrapped table headings changed",
+          "all_non_table_functions_ast_identical": true
+        },
+        "numerical_functions_verified_at_publication": true
+      }
+    },
+    "rolling": {
+      "classifier": {
+        "classifier": "tangent-space LDA (solver=lsqr, shrinkage=auto)",
+        "trial_covariance_shrinkage": 0.05,
+        "reference": "Riemannian mean of target training half only",
+        "source_helper": "ci_gate_ma2020_riemann.train_eval_ts"
+      },
+      "protocol": {
+        "subjects": {
+          "ma2020": 25,
+          "stieger": 62
+        },
+        "datasets": [
+          "ma2020",
+          "stieger"
+        ],
+        "seed": 20260714,
+        "target_cases": {
+          "ma2020": 275,
+          "stieger": 350
+        },
+        "min_sources": 4,
+        "downstream_splits": 1
+      },
+      "numerical_environment": {
+        "python": "3.13.9",
+        "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+        "packages": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.5.0"
+        },
+        "distribution_versions": {
+          "numpy": "2.2.6",
+          "scipy": "1.15.3",
+          "pandas": "2.3.3",
+          "scikit-learn": "1.7.2",
+          "mne": "1.11.0",
+          "threadpoolctl": "3.6.0"
+        },
+        "package_version_source": "imported module __version__",
+        "pyriemann_used": false,
+        "numerical_threads_per_worker": 1,
+        "source_helper_function_sha256": "7b510c65c0d4a9c4b7e4f2fb25f02d06959b17dc910ef47a96e4530c7b92056d",
+        "target_helper_function_sha256": "296233287eb6b43c5d28eb09b269f34ac11b1c90634b496729ed6dc46d6ed924",
+        "captured_during_run_utc": "2026-10-02T23:06:34.901052+00:00",
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "version_audit_note": "Initial capture used installed-distribution metadata. Imported module versions were checked during this same rerun; the original capture timestamp is retained.",
+        "version_audit_utc": "2026-10-02T23:10:18.901620+00:00"
+      },
+      "correction": {
+        "script": "rerun_matched_target_only.py",
+        "date": "2026-10-02",
+        "status": "complete",
+        "schema_version": 1,
+        "rows": 625,
+        "non_target_raw_rows_sha256": "e5d13c27a7cd0c9f6916eba0949d4234739f5b06d1c2c1e627ed2b7b4856f477",
+        "source_screening_and_fits_rerun": false,
+        "first_split_svd_parity_checks": 625,
+        "non_target_source_aggregates_unchanged": true,
+        "numerical_function_ast_sha256": {
+          "train_eval_target_only": "77f7731944c6844244d3c09e4d6adc1ff3cfdc73535dfff557a031e70c0910f8",
+          "train_eval_ts": "10d7d53b42be5fd63c0e6d9ddb0eb7ed23fb7773c52cc991c49a98a1b5868972",
+          "riemann_mean": "52f088f3114de1581f841706679914705e124e473d9e778488a2e2d261afd2f5",
+          "shrink": "15d267326356c20a6f3fbeb13428931e98db51eb84cc37ac36d02dbbfb70c4c8",
+          "tangent_features": "6393db454d16aa87c53d64201f8486736a7d62396e77f6a1a8dfd587ea84c15b"
+        },
+        "helper_layout_provenance": {
+          "file_sha256": [
+            "6e342047070d50c4427cb3ed0e939705ab9571bcbbef19a726def9ded1231248",
+            "b0b235917931a93d379f99c852dcc363819dc5c08cfdcefbd4760171dba868a7"
+          ],
+          "difference": "Only LaTeX float placement and wrapped table headings changed",
+          "all_non_table_functions_ast_identical": true
+        },
+        "numerical_functions_verified_at_publication": true
+      }
+    }
+  }
+}

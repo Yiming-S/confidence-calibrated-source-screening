@@ -1,8 +1,8 @@
 {
-  "script": "ci_gate_eeg_empirical_audit.py",
+  "script": "analysis/kumar2024/analyze.py and analysis/ci_gate_eeg_empirical_audit.py",
   "pseudo_populations": [
     "full-session BNCI2014_004 empirical covariance distributions",
-    "full-session Zhou2020 empirical covariance distributions"
+    "Kumar2024 empirical covariance distributions of eligible one-second bar trials"
   ],
   "subjects": [
     1,
@@ -22,49 +22,18 @@
     15,
     16,
     17,
-    18,
-    19,
-    20
+    18
   ],
   "outer_samples_per_subject": 50,
   "bnci_outer_samples_per_subject": 200,
   "outer_source_sample_fraction": 1.0,
   "outer_target_sample_fraction": 0.5,
   "bootstrap_repetitions": 499,
-  "bootstrap_sensitivity_subjects": [
-    1,
-    5,
-    10,
-    15,
-    20
-  ],
-  "bootstrap_sensitivity_outer_samples": 20,
-  "bootstrap_grid": [
-    199,
-    499,
-    999
-  ],
   "alpha": 0.05,
   "alpha_component": 0.025,
   "alpha_contrast": 0.025,
   "shrinkage": 0.1,
   "seed": 20260716,
-  "certificate": {
-    "subject": 1,
-    "target_session": 7,
-    "source_sessions": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6
-    ],
-    "retained_sessions": [
-      6
-    ],
-    "bootstrap_repetitions": 1999,
-    "threshold": 25.056963409207643
-  },
-  "runtime_seconds": 131.2
+  "kumar_analysis_role": "exploratory",
+  "kumar_protocol_sha256": "d33e859a359cbdf4a6debc15594eae1fee7fec5edad4ca802eecbef6aeb853bc"
 }

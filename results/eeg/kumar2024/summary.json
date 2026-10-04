@@ -1,0 +1,2576 @@
+{
+  "analysis_role": "exploratory",
+  "group_descriptive_only": {
+    "GR": {
+      "coverage": {
+        "coverage_c": 0.9600000000000001,
+        "coverage_d": 0.8866666666666667,
+        "coverage_joint": 0.8844444444444446,
+        "exact_recovery": 0.09999999999999999,
+        "mean_pairwise_jaccard": 0.8590854119425548,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.6284444444444444,
+        "set_size": 3.1422222222222222,
+        "worst_reference_excess": 2.0264169565002628
+      },
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.6469949494949494,
+          "set_size": 5.0,
+          "training_trials": 289.22222222222223
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.6781635442746553,
+          "set_size": 2.7555555555555555,
+          "training_trials": 146.65555555555557
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.6916788972344529,
+          "set_size": 3.162962962962963,
+          "training_trials": 169.28518518518518
+        },
+        "target_only": {
+          "balanced_accuracy": 0.6682849146738036,
+          "set_size": 0.0,
+          "training_trials": 21.555555555555557
+        },
+        "top1": {
+          "balanced_accuracy": 0.6341864514086737,
+          "set_size": 1.0,
+          "training_trials": 51.35185185185185
+        },
+        "top3": {
+          "balanced_accuracy": 0.660975711531267,
+          "set_size": 3.0,
+          "training_trials": 161.64074074074077
+        }
+      },
+      "n_outer": 450,
+      "n_subjects": 9
+    },
+    "PAR": {
+      "coverage": {
+        "coverage_c": 0.9533333333333334,
+        "coverage_d": 0.9533333333333334,
+        "coverage_joint": 0.9266666666666666,
+        "exact_recovery": 0.006666666666666666,
+        "mean_pairwise_jaccard": 0.8670355253212396,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.772888888888889,
+        "set_size": 3.8644444444444446,
+        "worst_reference_excess": 2.7789909411277165
+      },
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.7083469000135666,
+          "set_size": 5.0,
+          "training_trials": 298.6666666666667
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.722595645095645,
+          "set_size": 3.718518518518519,
+          "training_trials": 210.34814814814814
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.7152282593949262,
+          "set_size": 3.962962962962963,
+          "training_trials": 226.78148148148148
+        },
+        "target_only": {
+          "balanced_accuracy": 0.7351095509428842,
+          "set_size": 0.0,
+          "training_trials": 24.77777777777778
+        },
+        "top1": {
+          "balanced_accuracy": 0.7138963505630173,
+          "set_size": 1.0,
+          "training_trials": 54.659259259259265
+        },
+        "top3": {
+          "balanced_accuracy": 0.6988763397096729,
+          "set_size": 3.0,
+          "training_trials": 171.16296296296298
+        }
+      },
+      "n_outer": 450,
+      "n_subjects": 9
+    }
+  },
+  "identity": {
+    "cache_sha256": "1671a1574282e2f1246d843a505c4406a364e4cab7ba760b004662b08e18c2de",
+    "code_sha256": "32b45ef309c4b76937fb1f14c9f8a060151cae1d3cf5a0bb522428dd56f131b7",
+    "environment": {
+      "numeric_threads_per_worker": 1,
+      "numpy": "2.5.3",
+      "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+      "python": "3.12.14",
+      "scikit_learn": "1.9.1",
+      "scipy": "1.18.1"
+    },
+    "protocol_sha256": "d33e859a359cbdf4a6debc15594eae1fee7fec5edad4ca802eecbef6aeb853bc"
+  },
+  "overall": {
+    "coverage": {
+      "coverage_c": 0.9566666666666666,
+      "coverage_d": 0.9199999999999999,
+      "coverage_joint": 0.9055555555555554,
+      "exact_recovery": 0.05333333333333333,
+      "mean_pairwise_jaccard": 0.8630604686318972,
+      "oracle_retained": 1.0,
+      "retained_fraction": 0.7006666666666667,
+      "set_size": 3.5033333333333334,
+      "worst_reference_excess": 2.40270394881399
+    },
+    "methods": {
+      "all_sources": {
+        "balanced_accuracy": 0.6776709247542579,
+        "set_size": 5.0,
+        "training_trials": 293.94444444444446
+      },
+      "mcs_stepdown": {
+        "balanced_accuracy": 0.7003795946851503,
+        "set_size": 3.237037037037037,
+        "training_trials": 178.50185185185185
+      },
+      "pair_ref": {
+        "balanced_accuracy": 0.7034535783146896,
+        "set_size": 3.5629629629629633,
+        "training_trials": 198.03333333333336
+      },
+      "target_only": {
+        "balanced_accuracy": 0.701697232808344,
+        "set_size": 0.0,
+        "training_trials": 23.166666666666668
+      },
+      "top1": {
+        "balanced_accuracy": 0.6740414009858454,
+        "set_size": 1.0,
+        "training_trials": 53.00555555555555
+      },
+      "top3": {
+        "balanced_accuracy": 0.67992602562047,
+        "set_size": 3.0,
+        "training_trials": 166.40185185185183
+      }
+    },
+    "n_outer": 900,
+    "n_subjects": 18
+  },
+  "primary_refinement_minus_all_sources": {
+    "differences": [
+      0.014629629629629659,
+      0.14216524216524196,
+      0.041666666666666574,
+      -0.0683080808080806,
+      0.037542087542087654,
+      0.0962121212121212,
+      0.08698523698523697,
+      -0.0015151515151513584,
+      0.05277777777777781,
+      0.0,
+      -0.026666666666666505,
+      -0.10589743589743583,
+      0.04761904761904767,
+      0.014444444444444482,
+      -0.005384615384615099,
+      -0.0013492063492064332,
+      0.12666666666666682,
+      0.012500000000000067
+    ],
+    "mean_difference": 0.02578265356043139,
+    "n_subjects": 18,
+    "noninferiority": {
+      "0.01": {
+        "margin": 0.01,
+        "noninferior": true,
+        "one_sided_95_lower": 0.00013481676988417665,
+        "one_sided_p": 0.013314123073510877
+      },
+      "0.02": {
+        "margin": 0.02,
+        "noninferior": true,
+        "one_sided_95_lower": 0.00013481676988417665,
+        "one_sided_p": 0.0032156507623692875
+      }
+    },
+    "standard_error": 0.01474346839783395,
+    "two_sided_95_ci": [
+      -0.005323345736611872,
+      0.05688865285747466
+    ],
+    "unit": "balanced_accuracy_fraction"
+  },
+  "refinement_minus_mcs": {
+    "differences": [
+      -0.001296296296296351,
+      0.025925925925925908,
+      0.004166666666666652,
+      -0.03712121212121222,
+      0.0,
+      -0.007575757575757569,
+      0.006478243978244036,
+      0.0060606060606061,
+      0.12499999999999978,
+      0.0,
+      -0.014444444444444371,
+      -0.012307692307692242,
+      -0.0011904761904761862,
+      -0.025555555555555554,
+      -0.03653846153846152,
+      0.0015079365079364582,
+      0.0,
+      0.022222222222222254
+    ],
+    "mean_difference": 0.003073983629539176,
+    "n_subjects": 18,
+    "noninferiority": {},
+    "standard_error": 0.008186144555298725,
+    "two_sided_95_ci": [
+      -0.014197271675625452,
+      0.020345238934703806
+    ],
+    "unit": "balanced_accuracy_fraction"
+  },
+  "statistical_note": "Each subject contributes one mean across 30 target splits. The 95% paired t intervals are pointwise. Noninferiority uses one-sided alpha=0.05 and margins 0.02 (primary) and 0.01 (sensitivity); groups are descriptive only. Target-only uses labeled screening trials; source screens do not. Empirical-reference coverage is not population coverage.",
+  "status": "complete",
+  "subject_means": [
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 1.0,
+        "coverage_joint": 1.0,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.9038367346938776,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.9239999999999999,
+        "set_size": 4.62,
+        "source_inclusion_frequencies": {
+          "1": 0.62,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "worst_reference_excess": 1.1774327394908388
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 257
+        },
+        "mcs_stepdown": {
+          "set_size": 4,
+          "source_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 177
+        },
+        "pair_ref": {
+          "set_size": 4,
+          "source_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 177
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 41
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            1,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            4,
+            5
+          ],
+          "training_trials": 130
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.5307407407407407,
+          "set_size": 5.0,
+          "training_trials": 257.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.5466666666666667,
+          "set_size": 4.333333333333333,
+          "training_trials": 203.66666666666666
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.5453703703703704,
+          "set_size": 4.533333333333333,
+          "training_trials": 219.66666666666666
+        },
+        "target_only": {
+          "balanced_accuracy": 0.44129629629629624,
+          "set_size": 0.0,
+          "training_trials": 19.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.49592592592592594,
+          "set_size": 1.0,
+          "training_trials": 44.96666666666667
+        },
+        "top3": {
+          "balanced_accuracy": 0.5366666666666666,
+          "set_size": 3.0,
+          "training_trials": 130.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 1,
+      "subject": 1
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 0.98,
+        "coverage_joint": 0.98,
+        "exact_recovery": 0.06,
+        "mean_pairwise_jaccard": 0.883265306122449,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.408,
+        "set_size": 2.04,
+        "source_inclusion_frequencies": {
+          "1": 0.0,
+          "2": 0.1,
+          "3": 0.94,
+          "4": 0.0,
+          "5": 1.0
+        },
+        "worst_reference_excess": 1.354694172557432
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 287
+        },
+        "mcs_stepdown": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 47
+        },
+        "pair_ref": {
+          "set_size": 2,
+          "source_indices": [
+            2,
+            4
+          ],
+          "source_sessions": [
+            3,
+            5
+          ],
+          "training_trials": 94
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 47
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 148
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.7072649572649573,
+          "set_size": 5.0,
+          "training_trials": 287.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.8235042735042734,
+          "set_size": 1.1333333333333333,
+          "training_trials": 53.266666666666666
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.8494301994301993,
+          "set_size": 2.033333333333333,
+          "training_trials": 95.96666666666667
+        },
+        "target_only": {
+          "balanced_accuracy": 0.8206552706552707,
+          "set_size": 0.0,
+          "training_trials": 21.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.8086894586894586,
+          "set_size": 1.0,
+          "training_trials": 47.0
+        },
+        "top3": {
+          "balanced_accuracy": 0.7834757834757833,
+          "set_size": 3.0,
+          "training_trials": 148.83333333333334
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 2,
+      "subject": 2
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 0.98,
+        "coverage_joint": 0.98,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.9440816326530612,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.8119999999999998,
+        "set_size": 4.06,
+        "source_inclusion_frequencies": {
+          "1": 1.0,
+          "2": 0.1,
+          "3": 1.0,
+          "4": 0.96,
+          "5": 1.0
+        },
+        "worst_reference_excess": 0.2572463808347382
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 278
+        },
+        "mcs_stepdown": {
+          "set_size": 4,
+          "source_indices": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 221
+        },
+        "pair_ref": {
+          "set_size": 4,
+          "source_indices": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 221
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            2
+          ],
+          "source_sessions": [
+            3
+          ],
+          "training_trials": 43
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            2,
+            3
+          ],
+          "source_sessions": [
+            1,
+            3,
+            4
+          ],
+          "training_trials": 171
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.4763888888888889,
+          "set_size": 5.0,
+          "training_trials": 278.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.5138888888888888,
+          "set_size": 4.133333333333334,
+          "training_trials": 228.6
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.5180555555555555,
+          "set_size": 4.0,
+          "training_trials": 221.0
+        },
+        "target_only": {
+          "balanced_accuracy": 0.5916666666666668,
+          "set_size": 0.0,
+          "training_trials": 24.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.5375,
+          "set_size": 1.0,
+          "training_trials": 52.86666666666667
+        },
+        "top3": {
+          "balanced_accuracy": 0.5138888888888888,
+          "set_size": 3.0,
+          "training_trials": 157.06666666666666
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 3,
+      "subject": 3
+    },
+    {
+      "coverage": {
+        "coverage_c": 0.96,
+        "coverage_d": 0.86,
+        "coverage_joint": 0.86,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.789795918367347,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.5880000000000001,
+        "set_size": 2.94,
+        "source_inclusion_frequencies": {
+          "1": 0.2,
+          "2": 0.76,
+          "3": 0.0,
+          "4": 0.98,
+          "5": 1.0
+        },
+        "worst_reference_excess": 3.8492120763318893
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 275
+        },
+        "mcs_stepdown": {
+          "set_size": 2,
+          "source_indices": [
+            3,
+            4
+          ],
+          "source_sessions": [
+            4,
+            5
+          ],
+          "training_trials": 90
+        },
+        "pair_ref": {
+          "set_size": 3,
+          "source_indices": [
+            1,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            4,
+            5
+          ],
+          "training_trials": 152
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 44
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            1,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            4,
+            5
+          ],
+          "training_trials": 152
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.8309343434343432,
+          "set_size": 5.0,
+          "training_trials": 275.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.7997474747474749,
+          "set_size": 2.033333333333333,
+          "training_trials": 93.13333333333334
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.7626262626262627,
+          "set_size": 2.9,
+          "training_trials": 146.4
+        },
+        "target_only": {
+          "balanced_accuracy": 0.8180555555555556,
+          "set_size": 0.0,
+          "training_trials": 23.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.640909090909091,
+          "set_size": 1.0,
+          "training_trials": 44.0
+        },
+        "top3": {
+          "balanced_accuracy": 0.751641414141414,
+          "set_size": 3.0,
+          "training_trials": 152.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 4,
+      "subject": 4
+    },
+    {
+      "coverage": {
+        "coverage_c": 0.9,
+        "coverage_d": 0.8,
+        "coverage_joint": 0.78,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.8870612244897959,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.44799999999999995,
+        "set_size": 2.24,
+        "source_inclusion_frequencies": {
+          "1": 0.02,
+          "2": 0.12,
+          "3": 0.1,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "worst_reference_excess": 3.576125180282745
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 304
+        },
+        "mcs_stepdown": {
+          "set_size": 2,
+          "source_indices": [
+            3,
+            4
+          ],
+          "source_sessions": [
+            4,
+            5
+          ],
+          "training_trials": 96
+        },
+        "pair_ref": {
+          "set_size": 2,
+          "source_indices": [
+            3,
+            4
+          ],
+          "source_sessions": [
+            4,
+            5
+          ],
+          "training_trials": 96
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            3
+          ],
+          "source_sessions": [
+            4
+          ],
+          "training_trials": 46
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 149
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.6410774410774409,
+          "set_size": 5.0,
+          "training_trials": 304.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.6786195286195286,
+          "set_size": 2.0,
+          "training_trials": 96.0
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.6786195286195286,
+          "set_size": 2.0,
+          "training_trials": 96.0
+        },
+        "target_only": {
+          "balanced_accuracy": 0.7353535353535354,
+          "set_size": 0.0,
+          "training_trials": 20.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.6981481481481481,
+          "set_size": 1.0,
+          "training_trials": 46.13333333333333
+        },
+        "top3": {
+          "balanced_accuracy": 0.6765993265993265,
+          "set_size": 3.0,
+          "training_trials": 149.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 5,
+      "subject": 5
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 0.94,
+        "coverage_joint": 0.94,
+        "exact_recovery": 0.84,
+        "mean_pairwise_jaccard": 0.8487074829931972,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.23599999999999993,
+        "set_size": 1.18,
+        "source_inclusion_frequencies": {
+          "1": 0.08,
+          "2": 1.0,
+          "3": 0.1,
+          "4": 0.0,
+          "5": 0.0
+        },
+        "worst_reference_excess": 0.14518954651192165
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 295
+        },
+        "mcs_stepdown": {
+          "set_size": 1,
+          "source_indices": [
+            1
+          ],
+          "source_sessions": [
+            2
+          ],
+          "training_trials": 71
+        },
+        "pair_ref": {
+          "set_size": 1,
+          "source_indices": [
+            1
+          ],
+          "source_sessions": [
+            2
+          ],
+          "training_trials": 71
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            1
+          ],
+          "source_sessions": [
+            2
+          ],
+          "training_trials": 71
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            1,
+            2
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3
+          ],
+          "training_trials": 202
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.46590909090909094,
+          "set_size": 5.0,
+          "training_trials": 295.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.5696969696969697,
+          "set_size": 1.0,
+          "training_trials": 71.0
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.5621212121212121,
+          "set_size": 1.1333333333333333,
+          "training_trials": 81.66666666666667
+        },
+        "target_only": {
+          "balanced_accuracy": 0.5276515151515152,
+          "set_size": 0.0,
+          "training_trials": 23.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.5696969696969697,
+          "set_size": 1.0,
+          "training_trials": 71.0
+        },
+        "top3": {
+          "balanced_accuracy": 0.4992424242424243,
+          "set_size": 3.0,
+          "training_trials": 202.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 6,
+      "subject": 6
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 1.0,
+        "coverage_joint": 1.0,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.9261224489795918,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.7679999999999998,
+        "set_size": 3.84,
+        "source_inclusion_frequencies": {
+          "1": 0.0,
+          "2": 0.88,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 0.96
+        },
+        "worst_reference_excess": 0.5500745089467971
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 319
+        },
+        "mcs_stepdown": {
+          "set_size": 2,
+          "source_indices": [
+            2,
+            3
+          ],
+          "source_sessions": [
+            3,
+            4
+          ],
+          "training_trials": 113
+        },
+        "pair_ref": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 167
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            3
+          ],
+          "source_sessions": [
+            4
+          ],
+          "training_trials": 55
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            1,
+            2,
+            3
+          ],
+          "source_sessions": [
+            2,
+            3,
+            4
+          ],
+          "training_trials": 185
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.734527972027972,
+          "set_size": 5.0,
+          "training_trials": 319.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.815034965034965,
+          "set_size": 3.2666666666666666,
+          "training_trials": 192.06666666666666
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.821513209013209,
+          "set_size": 3.8666666666666667,
+          "training_trials": 229.4
+        },
+        "target_only": {
+          "balanced_accuracy": 0.7531177156177156,
+          "set_size": 0.0,
+          "training_trials": 24.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.7285256410256411,
+          "set_size": 1.0,
+          "training_trials": 55.0
+        },
+        "top3": {
+          "balanced_accuracy": 0.8001456876456878,
+          "set_size": 3.0,
+          "training_trials": 180.2
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 7,
+      "subject": 7
+    },
+    {
+      "coverage": {
+        "coverage_c": 0.78,
+        "coverage_d": 0.44,
+        "coverage_joint": 0.44,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.7888571428571428,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.8719999999999999,
+        "set_size": 4.36,
+        "source_inclusion_frequencies": {
+          "1": 0.76,
+          "2": 1.0,
+          "3": 0.82,
+          "4": 0.78,
+          "5": 1.0
+        },
+        "worst_reference_excess": 5.808551133616898
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 308
+        },
+        "mcs_stepdown": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 308
+        },
+        "pair_ref": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 308
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 49
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            1,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            5
+          ],
+          "training_trials": 206
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.7000000000000001,
+          "set_size": 5.0,
+          "training_trials": 308.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.6924242424242426,
+          "set_size": 4.6,
+          "training_trials": 283.73333333333335
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.6984848484848487,
+          "set_size": 4.933333333333334,
+          "training_trials": 302.6666666666667
+        },
+        "target_only": {
+          "balanced_accuracy": 0.5545454545454545,
+          "set_size": 0.0,
+          "training_trials": 21.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.6060606060606061,
+          "set_size": 1.0,
+          "training_trials": 63.2
+        },
+        "top3": {
+          "balanced_accuracy": 0.6121212121212121,
+          "set_size": 3.0,
+          "training_trials": 206.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 8,
+      "subject": 8
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 0.98,
+        "coverage_joint": 0.98,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.7600408163265305,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.6,
+        "set_size": 3.0,
+        "source_inclusion_frequencies": {
+          "1": 0.02,
+          "2": 0.28,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 0.7
+        },
+        "worst_reference_excess": 1.5192268699291072
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 280
+        },
+        "mcs_stepdown": {
+          "set_size": 2,
+          "source_indices": [
+            2,
+            3
+          ],
+          "source_sessions": [
+            3,
+            4
+          ],
+          "training_trials": 86
+        },
+        "pair_ref": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 123
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            3
+          ],
+          "source_sessions": [
+            4
+          ],
+          "training_trials": 38
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 123
+        }
+      },
+      "group": "GR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.736111111111111,
+          "set_size": 5.0,
+          "training_trials": 280.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.6638888888888891,
+          "set_size": 2.3,
+          "training_trials": 98.43333333333334
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.7888888888888889,
+          "set_size": 3.066666666666667,
+          "training_trials": 130.8
+        },
+        "target_only": {
+          "balanced_accuracy": 0.7722222222222223,
+          "set_size": 0.0,
+          "training_trials": 19.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.6222222222222223,
+          "set_size": 1.0,
+          "training_trials": 38.0
+        },
+        "top3": {
+          "balanced_accuracy": 0.7749999999999999,
+          "set_size": 3.0,
+          "training_trials": 129.66666666666666
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 9,
+      "subject": 9
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 1.0,
+        "coverage_joint": 1.0,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.9682857142857143,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.9840000000000001,
+        "set_size": 4.92,
+        "source_inclusion_frequencies": {
+          "1": 0.98,
+          "2": 1.0,
+          "3": 0.98,
+          "4": 0.96,
+          "5": 1.0
+        },
+        "worst_reference_excess": 0.457392655278924
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 303
+        },
+        "mcs_stepdown": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 303
+        },
+        "pair_ref": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 303
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            1
+          ],
+          "source_sessions": [
+            2
+          ],
+          "training_trials": 64
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            1,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            5
+          ],
+          "training_trials": 199
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.6888278388278387,
+          "set_size": 5.0,
+          "training_trials": 303.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.6888278388278387,
+          "set_size": 5.0,
+          "training_trials": 303.0
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.6888278388278387,
+          "set_size": 5.0,
+          "training_trials": 303.0
+        },
+        "target_only": {
+          "balanced_accuracy": 0.6010989010989011,
+          "set_size": 0.0,
+          "training_trials": 27.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.5425824175824177,
+          "set_size": 1.0,
+          "training_trials": 62.5
+        },
+        "top3": {
+          "balanced_accuracy": 0.612087912087912,
+          "set_size": 3.0,
+          "training_trials": 192.86666666666667
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 11,
+      "subject": 10
+    },
+    {
+      "coverage": {
+        "coverage_c": 0.64,
+        "coverage_d": 0.86,
+        "coverage_joint": 0.64,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.7753877551020408,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.504,
+        "set_size": 2.52,
+        "source_inclusion_frequencies": {
+          "1": 0.22,
+          "2": 1.0,
+          "3": 1.0,
+          "4": 0.02,
+          "5": 0.28
+        },
+        "worst_reference_excess": 1.6671276908200765
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 313
+        },
+        "mcs_stepdown": {
+          "set_size": 2,
+          "source_indices": [
+            1,
+            2
+          ],
+          "source_sessions": [
+            2,
+            3
+          ],
+          "training_trials": 128
+        },
+        "pair_ref": {
+          "set_size": 2,
+          "source_indices": [
+            1,
+            2
+          ],
+          "source_sessions": [
+            2,
+            3
+          ],
+          "training_trials": 128
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            2
+          ],
+          "source_sessions": [
+            3
+          ],
+          "training_trials": 60
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            1,
+            2,
+            4
+          ],
+          "source_sessions": [
+            2,
+            3,
+            5
+          ],
+          "training_trials": 175
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.9344444444444443,
+          "set_size": 5.0,
+          "training_trials": 313.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.9222222222222222,
+          "set_size": 2.1,
+          "training_trials": 132.7
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.9077777777777778,
+          "set_size": 2.7,
+          "training_trials": 173.0
+        },
+        "target_only": {
+          "balanced_accuracy": 0.8666666666666666,
+          "set_size": 0.0,
+          "training_trials": 29.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.882222222222222,
+          "set_size": 1.0,
+          "training_trials": 63.46666666666667
+        },
+        "top3": {
+          "balanced_accuracy": 0.8966666666666665,
+          "set_size": 3.0,
+          "training_trials": 181.23333333333332
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 12,
+      "subject": 11
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 1.0,
+        "coverage_joint": 1.0,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.8446938775510204,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.7519999999999999,
+        "set_size": 3.76,
+        "source_inclusion_frequencies": {
+          "1": 1.0,
+          "2": 0.1,
+          "3": 0.68,
+          "4": 0.98,
+          "5": 1.0
+        },
+        "worst_reference_excess": 1.1746398647582306
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 331
+        },
+        "mcs_stepdown": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 193
+        },
+        "pair_ref": {
+          "set_size": 4,
+          "source_indices": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 253
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 56
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 193
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.7544444444444445,
+          "set_size": 5.0,
+          "training_trials": 331.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.6608547008547009,
+          "set_size": 3.6,
+          "training_trials": 229.0
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.6485470085470086,
+          "set_size": 3.8,
+          "training_trials": 241.0
+        },
+        "target_only": {
+          "balanced_accuracy": 0.7950427350427349,
+          "set_size": 0.0,
+          "training_trials": 27.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.6729914529914531,
+          "set_size": 1.0,
+          "training_trials": 56.86666666666667
+        },
+        "top3": {
+          "balanced_accuracy": 0.6974358974358975,
+          "set_size": 3.0,
+          "training_trials": 193.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 13,
+      "subject": 12
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 0.98,
+        "coverage_joint": 0.98,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.922938775510204,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.816,
+        "set_size": 4.08,
+        "source_inclusion_frequencies": {
+          "1": 0.94,
+          "2": 1.0,
+          "3": 0.14,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "worst_reference_excess": 1.6701972154597318
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 327
+        },
+        "mcs_stepdown": {
+          "set_size": 4,
+          "source_indices": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "training_trials": 268
+        },
+        "pair_ref": {
+          "set_size": 4,
+          "source_indices": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "training_trials": 268
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 56
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            1,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            4,
+            5
+          ],
+          "training_trials": 188
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.6678571428571427,
+          "set_size": 5.0,
+          "training_trials": 327.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.7166666666666666,
+          "set_size": 4.066666666666666,
+          "training_trials": 271.93333333333334
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.7154761904761904,
+          "set_size": 4.066666666666666,
+          "training_trials": 271.93333333333334
+        },
+        "target_only": {
+          "balanced_accuracy": 0.8119047619047619,
+          "set_size": 0.0,
+          "training_trials": 27.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.7571428571428573,
+          "set_size": 1.0,
+          "training_trials": 56.0
+        },
+        "top3": {
+          "balanced_accuracy": 0.7392857142857141,
+          "set_size": 3.0,
+          "training_trials": 188.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 14,
+      "subject": 13
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 0.94,
+        "coverage_joint": 0.94,
+        "exact_recovery": 0.02,
+        "mean_pairwise_jaccard": 0.8173469387755102,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.6800000000000002,
+        "set_size": 3.4,
+        "source_inclusion_frequencies": {
+          "1": 0.0,
+          "2": 0.5,
+          "3": 1.0,
+          "4": 0.94,
+          "5": 0.96
+        },
+        "worst_reference_excess": 0.8469773835847637
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 325
+        },
+        "mcs_stepdown": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 165
+        },
+        "pair_ref": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 165
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            2
+          ],
+          "source_sessions": [
+            3
+          ],
+          "training_trials": 56
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            3,
+            4,
+            5
+          ],
+          "training_trials": 165
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.41111111111111115,
+          "set_size": 5.0,
+          "training_trials": 325.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.4511111111111112,
+          "set_size": 3.1,
+          "training_trials": 173.0
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.42555555555555563,
+          "set_size": 3.533333333333333,
+          "training_trials": 207.66666666666666
+        },
+        "target_only": {
+          "balanced_accuracy": 0.5544444444444444,
+          "set_size": 0.0,
+          "training_trials": 29.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.4333333333333334,
+          "set_size": 1.0,
+          "training_trials": 55.86666666666667
+        },
+        "top3": {
+          "balanced_accuracy": 0.4611111111111112,
+          "set_size": 3.0,
+          "training_trials": 165.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 15,
+      "subject": 14
+    },
+    {
+      "coverage": {
+        "coverage_c": 0.98,
+        "coverage_d": 0.94,
+        "coverage_joint": 0.92,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.8341632653061224,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.628,
+        "set_size": 3.14,
+        "source_inclusion_frequencies": {
+          "1": 0.88,
+          "2": 0.08,
+          "3": 0.18,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "worst_reference_excess": 2.9993020258033245
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 306
+        },
+        "mcs_stepdown": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 173
+        },
+        "pair_ref": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 173
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 54
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 173
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.6308974358974357,
+          "set_size": 5.0,
+          "training_trials": 306.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.6620512820512822,
+          "set_size": 2.5,
+          "training_trials": 132.1
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.6255128205128206,
+          "set_size": 2.933333333333333,
+          "training_trials": 165.1
+        },
+        "target_only": {
+          "balanced_accuracy": 0.6011538461538461,
+          "set_size": 0.0,
+          "training_trials": 22.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.6701282051282049,
+          "set_size": 1.0,
+          "training_trials": 46.5
+        },
+        "top3": {
+          "balanced_accuracy": 0.6456410256410258,
+          "set_size": 3.0,
+          "training_trials": 167.96666666666667
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 16,
+      "subject": 15
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 1.0,
+        "coverage_joint": 1.0,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.9020408163265307,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.92,
+        "set_size": 4.6,
+        "source_inclusion_frequencies": {
+          "1": 1.0,
+          "2": 0.6,
+          "3": 1.0,
+          "4": 1.0,
+          "5": 1.0
+        },
+        "worst_reference_excess": 9.320659699384942
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 275
+        },
+        "mcs_stepdown": {
+          "set_size": 4,
+          "source_indices": [
+            0,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 208
+        },
+        "pair_ref": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 275
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            0
+          ],
+          "source_sessions": [
+            1
+          ],
+          "training_trials": 80
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 169
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.766984126984127,
+          "set_size": 5.0,
+          "training_trials": 275.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.7641269841269841,
+          "set_size": 4.633333333333334,
+          "training_trials": 250.43333333333334
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.7656349206349206,
+          "set_size": 4.866666666666666,
+          "training_trials": 266.06666666666666
+        },
+        "target_only": {
+          "balanced_accuracy": 0.7020634920634918,
+          "set_size": 0.0,
+          "training_trials": 28.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.6511111111111112,
+          "set_size": 1.0,
+          "training_trials": 78.93333333333334
+        },
+        "top3": {
+          "balanced_accuracy": 0.7457142857142857,
+          "set_size": 3.0,
+          "training_trials": 167.63333333333333
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 17,
+      "subject": 16
+    },
+    {
+      "coverage": {
+        "coverage_c": 1.0,
+        "coverage_d": 0.96,
+        "coverage_joint": 0.96,
+        "exact_recovery": 0.04,
+        "mean_pairwise_jaccard": 0.854829931972789,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.736,
+        "set_size": 3.68,
+        "source_inclusion_frequencies": {
+          "1": 0.0,
+          "2": 0.88,
+          "3": 0.84,
+          "4": 1.0,
+          "5": 0.96
+        },
+        "worst_reference_excess": 0.6410514535115446
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 279
+        },
+        "mcs_stepdown": {
+          "set_size": 4,
+          "source_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 199
+        },
+        "pair_ref": {
+          "set_size": 4,
+          "source_indices": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 199
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            3
+          ],
+          "source_sessions": [
+            4
+          ],
+          "training_trials": 45
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            1,
+            3,
+            4
+          ],
+          "source_sessions": [
+            2,
+            4,
+            5
+          ],
+          "training_trials": 149
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.7177777777777777,
+          "set_size": 5.0,
+          "training_trials": 279.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.8444444444444446,
+          "set_size": 4.0,
+          "training_trials": 199.0
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.8444444444444446,
+          "set_size": 4.0,
+          "training_trials": 199.0
+        },
+        "target_only": {
+          "balanced_accuracy": 0.7544444444444444,
+          "set_size": 0.0,
+          "training_trials": 25.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.857222222222222,
+          "set_size": 1.0,
+          "training_trials": 45.8
+        },
+        "top3": {
+          "balanced_accuracy": 0.8016666666666665,
+          "set_size": 3.0,
+          "training_trials": 148.76666666666668
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 18,
+      "subject": 17
+    },
+    {
+      "coverage": {
+        "coverage_c": 0.96,
+        "coverage_d": 0.9,
+        "coverage_joint": 0.9,
+        "exact_recovery": 0.0,
+        "mean_pairwise_jaccard": 0.8836326530612245,
+        "oracle_retained": 1.0,
+        "retained_fraction": 0.9359999999999999,
+        "set_size": 4.68,
+        "source_inclusion_frequencies": {
+          "1": 0.96,
+          "2": 0.84,
+          "3": 0.9,
+          "4": 0.98,
+          "5": 1.0
+        },
+        "worst_reference_excess": 6.233570481547913
+      },
+      "full_target_screening": {
+        "all_sources": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 229
+        },
+        "mcs_stepdown": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 136
+        },
+        "pair_ref": {
+          "set_size": 5,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "training_trials": 229
+        },
+        "top1": {
+          "set_size": 1,
+          "source_indices": [
+            4
+          ],
+          "source_sessions": [
+            5
+          ],
+          "training_trials": 22
+        },
+        "top3": {
+          "set_size": 3,
+          "source_indices": [
+            0,
+            3,
+            4
+          ],
+          "source_sessions": [
+            1,
+            4,
+            5
+          ],
+          "training_trials": 136
+        }
+      },
+      "group": "PAR",
+      "methods": {
+        "all_sources": {
+          "balanced_accuracy": 0.8027777777777777,
+          "set_size": 5.0,
+          "training_trials": 229.0
+        },
+        "mcs_stepdown": {
+          "balanced_accuracy": 0.7930555555555555,
+          "set_size": 4.466666666666667,
+          "training_trials": 201.96666666666667
+        },
+        "pair_ref": {
+          "balanced_accuracy": 0.8152777777777778,
+          "set_size": 4.766666666666667,
+          "training_trials": 214.26666666666668
+        },
+        "target_only": {
+          "balanced_accuracy": 0.9291666666666667,
+          "set_size": 0.0,
+          "training_trials": 9.0
+        },
+        "top1": {
+          "balanced_accuracy": 0.9583333333333334,
+          "set_size": 1.0,
+          "training_trials": 26.0
+        },
+        "top3": {
+          "balanced_accuracy": 0.6902777777777777,
+          "set_size": 3.0,
+          "training_trials": 136.0
+        }
+      },
+      "n_outer": 50,
+      "n_splits": 30,
+      "raw_subject": 19,
+      "subject": 18
+    }
+  ]
+}

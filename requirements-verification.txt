@@ -1,0 +1,5 @@
+# Aggregate verification, figure reconstruction, and synthetic regression tests.
+-r requirements-figures.txt
+scikit-learn==1.7.2
+mne==1.11.0
+threadpoolctl==3.6.0

@@ -111,5 +111,6 @@
   "full_target_trial_order": "native cache order",
   "downstream_screen_indices_sorted_to_recording_order": true,
   "seed": 20260715,
-  "runtime_seconds": 1521.8
+  "runtime_seconds": 1521.8,
+  "compact_release_scope": "Stieger2021 rows only from this historical run; current Kumar2024 rows and separate plan are in results/eeg/kumar2024/supplemental."
 }

@@ -37,7 +37,11 @@ def main() -> None:
     ]
 
     with (RESULTS / "MANIFEST.csv").open("w", newline="", encoding="utf-8") as stream:
-        writer = csv.DictWriter(stream, fieldnames=["path", "bytes", "sha256"])
+        writer = csv.DictWriter(
+            stream,
+            fieldnames=["path", "bytes", "sha256"],
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(rows)
 

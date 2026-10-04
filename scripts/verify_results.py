@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 """Verify the compact result release and its reconstructable main figures.
 
-The verification has four layers: SHA-256 and manifest integrity, required CSV
-and JSON schemas, independent reconstruction of Figure 1/2 source values, and
-subject-level recomputation of the reported non-inferiority statistics.  Figure
-3 is explicitly treated as an archival output because the compact release does
-not contain its bootstrap interval endpoints.
+The verification checks file integrity, schemas, Figure 1/2 source values,
+subject-level non-inferiority statistics, empirical coverage, matched
+target-only summaries, and the Kumar2024 exclusion-certificate bound algebra.
 """
 
 from __future__ import annotations
@@ -21,6 +19,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+from verify_empirical_coverage import verify_empirical_coverage
+from verify_target_only_reference import verify_target_only_reference
 from rebuild_figures import (
     OVERVIEW_COLUMNS,
     compute_eeg_overview,
@@ -193,7 +193,11 @@ def subject_differences(path: Path) -> np.ndarray:
     return differences
 
 
-def noninferiority_statistics(differences: np.ndarray, margin: float) -> dict[str, object]:
+def noninferiority_statistics(
+    differences: np.ndarray,
+    margin: float,
+    decision_alpha: float,
+) -> dict[str, object]:
     n = differences.size
     mean = float(differences.mean())
     standard_error = float(differences.std(ddof=1) / np.sqrt(n))
@@ -204,6 +208,10 @@ def noninferiority_statistics(differences: np.ndarray, margin: float) -> dict[st
     t_critical = stats.t.ppf(0.975, n - 1)
     ci_low = float(mean - t_critical * standard_error)
     ci_high = float(mean + t_critical * standard_error)
+    one_sided_lcb95 = float(
+        mean
+        - stats.t.ppf(1.0 - decision_alpha, n - 1) * standard_error
+    )
     try:
         wilcoxon_p = float(
             stats.wilcoxon(differences + margin, alternative="greater").pvalue
@@ -215,8 +223,9 @@ def noninferiority_statistics(differences: np.ndarray, margin: float) -> dict[st
         "mean_diff": mean,
         "ci95_low": ci_low,
         "ci95_high": ci_high,
+        "one_sided_lcb95": one_sided_lcb95,
         "delta_NI": float(margin),
-        "noninferior_at_delta": bool(ci_low > -margin),
+        "noninferior_at_delta": bool(one_sided_lcb95 > -margin),
         "p_noninferiority_ttest": t_p,
         "p_noninferiority_wilcoxon": wilcoxon_p,
         "frac_subjects_within_margin": float((differences > -margin).mean()),
@@ -268,11 +277,15 @@ def verify_noninferiority(input_dir: Path) -> None:
     primary_margin = float(ni_manifest.get("primary_margin", 0.02))
     if not math.isclose(primary_margin, 0.02, rel_tol=0, abs_tol=1e-12):
         raise ValueError(f"unexpected primary non-inferiority margin: {primary_margin}")
+    decision_alpha = float(ni_manifest.get("decision_alpha", 0.05))
+    if not math.isclose(decision_alpha, 0.05, rel_tol=0, abs_tol=1e-12):
+        raise ValueError(f"unexpected non-inferiority decision alpha: {decision_alpha}")
 
     datasets = {
         "ma2020": input_dir / "eeg" / "ma2020" / "downstream_by_subject.csv",
         "stieger2021": input_dir / "eeg" / "stieger2021" / "downstream_by_subject.csv",
-        "zhou2020": input_dir / "eeg" / "zhou2020" / "downstream_by_subject.csv",
+        "kumar2024": input_dir / "eeg" / "kumar2024" / "downstream_by_subject.csv",
+        "bnci2014_004": input_dir / "eeg" / "bnci2014_004" / "downstream_by_subject.csv",
     }
     differences: dict[str, np.ndarray] = {}
     required_fields = {
@@ -280,6 +293,7 @@ def verify_noninferiority(input_dir: Path) -> None:
         "mean_diff",
         "ci95_low",
         "ci95_high",
+        "one_sided_lcb95",
         "delta_NI",
         "noninferior_at_delta",
         "p_noninferiority_ttest",
@@ -292,16 +306,34 @@ def verify_noninferiority(input_dir: Path) -> None:
         )
     for dataset, path in datasets.items():
         differences[dataset] = subject_differences(path)
-        expected = noninferiority_statistics(differences[dataset], primary_margin)
+        expected = noninferiority_statistics(
+            differences[dataset],
+            primary_margin,
+            decision_alpha,
+        )
         observed = summary[dataset]
-        missing = sorted(required_fields - set(observed))
+        fields = required_fields - ({"p_noninferiority_wilcoxon"} if dataset == "kumar2024" else set())
+        missing = sorted(fields - set(observed))
         if missing:
             raise ValueError(f"{summary_path}:{dataset} is missing keys: {', '.join(missing)}")
         for field, expected_value in expected.items():
+            if dataset == "kumar2024" and field == "p_noninferiority_wilcoxon":
+                if field in observed:
+                    raise ValueError("Unplanned Kumar2024 Wilcoxon result must not be added")
+                continue
             compare_statistic(dataset, field, observed[field], expected_value)
-        logical_status = float(observed["ci95_low"]) > -float(observed["delta_NI"])
+        logical_status = float(observed["one_sided_lcb95"]) > -float(
+            observed["delta_NI"]
+        )
         if as_bool(observed["noninferior_at_delta"]) != logical_status:
-            raise ValueError(f"{dataset}: non-inferiority decision contradicts its CI and margin")
+            raise ValueError(
+                f"{dataset}: non-inferiority decision contradicts its one-sided LCB and margin"
+            )
+        p_status = float(observed["p_noninferiority_ttest"]) < decision_alpha
+        if logical_status != p_status:
+            raise ValueError(
+                f"{dataset}: one-sided LCB and t-test decisions disagree"
+            )
 
     sensitivity = read_csv(sensitivity_path, {"dataset", "delta_NI"} | required_fields)
     if sensitivity.duplicated(["dataset", "delta_NI"]).any():
@@ -310,10 +342,21 @@ def verify_noninferiority(input_dir: Path) -> None:
         dataset = str(row["dataset"])
         if dataset not in differences:
             raise ValueError(f"unexpected dataset in {sensitivity_path}: {dataset}")
-        expected = noninferiority_statistics(differences[dataset], float(row["delta_NI"]))
+        expected = noninferiority_statistics(
+            differences[dataset],
+            float(row["delta_NI"]),
+            decision_alpha,
+        )
         for field, expected_value in expected.items():
+            if dataset == "kumar2024" and field == "p_noninferiority_wilcoxon":
+                if not pd.isna(row[field]):
+                    raise ValueError("Unplanned Kumar2024 Wilcoxon sensitivity must remain absent")
+                continue
             compare_statistic(dataset, field, row[field], expected_value)
-    print("[PASS] non-inferiority: subject-level statistics, margins, and decisions reproduced")
+    print(
+        "[PASS] non-inferiority: two-sided CIs, one-sided 95% LCB decisions, "
+        "and planned sensitivity tests reproduced"
+    )
 
 
 def verify_figure_two(input_dir: Path) -> None:
@@ -329,10 +372,10 @@ def verify_figure_two(input_dir: Path) -> None:
     ):
         raise ValueError("Figure 2 retained fractions do not equal retained/candidate")
     expected_status = {
-        "Ma2020": "not established",
+        "Ma2020": "inconclusive",
         "Stieger2021": "established",
-        "Zhou2020": "established",
-        "BNCI2014_004": "not tested",
+        "Kumar2024": "established",
+        "BNCI2014_004": "established",
     }
     observed_status = computed.set_index("dataset")["two_pp_noninferiority"].to_dict()
     if observed_status != expected_status:
@@ -341,50 +384,13 @@ def verify_figure_two(input_dir: Path) -> None:
 
 
 def verify_archival_figure_three(input_dir: Path, figure_dir: Path) -> None:
-    metadata_path = input_dir / "eeg" / "empirical_reference" / "manifest.json"
-    figure_path = figure_dir / "fig_zhou2020_exclusion_certificate.pdf"
-    if not metadata_path.is_file():
-        raise FileNotFoundError(f"archival Figure 3 metadata is missing: {metadata_path}")
-    if not figure_path.is_file():
-        raise FileNotFoundError(f"archival Figure 3 PDF is missing: {figure_path}")
-    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
-    required_top = {
-        "script",
-        "bootstrap_repetitions",
-        "alpha",
-        "alpha_component",
-        "alpha_contrast",
-        "shrinkage",
-        "seed",
-        "certificate",
-    }
-    missing_top = sorted(required_top - set(metadata))
-    if missing_top:
-        raise ValueError(f"{metadata_path} is missing keys: {', '.join(missing_top)}")
-    certificate = metadata["certificate"]
-    required_certificate = {
-        "subject",
-        "target_session",
-        "source_sessions",
-        "retained_sessions",
-        "bootstrap_repetitions",
-        "threshold",
-    }
-    missing_certificate = sorted(required_certificate - set(certificate))
-    if missing_certificate:
-        raise ValueError(
-            f"{metadata_path}:certificate is missing keys: {', '.join(missing_certificate)}"
-        )
-    sources = set(certificate["source_sessions"])
-    retained = set(certificate["retained_sessions"])
-    if not sources or not retained.issubset(sources):
-        raise ValueError("Figure 3 retained sessions are not a subset of source sessions")
-    if not math.isfinite(float(certificate["threshold"])):
-        raise ValueError("Figure 3 threshold is not finite")
+    from verify_kumar_results import verify_kumar_results
+    verify_kumar_results(input_dir / "eeg/kumar2024")
+    figure_path = figure_dir / "fig_kumar2024_exclusion_certificate.pdf"
     pdf = figure_path.read_bytes()
     if len(pdf) < 1024 or not pdf.startswith(b"%PDF-") or b"%%EOF" not in pdf[-2048:]:
-        raise ValueError(f"invalid archival PDF: {figure_path}")
-    print("[PASS] Figure 3 archival output and metadata verified (not regenerated)")
+        raise ValueError(f"invalid certificate PDF: {figure_path}")
+    print("[PASS] Kumar2024: subject aggregates, paired inference and plotted bound algebra verified")
 
 
 def parse_args() -> argparse.Namespace:
@@ -399,7 +405,7 @@ def parse_args() -> argparse.Namespace:
         "--figure-dir",
         type=Path,
         default=ROOT / "figures",
-        help="figure directory containing the archival Figure 3 PDF (default: figures)",
+        help="directory containing the current main-figure PDFs (default: figures)",
     )
     return parser.parse_args()
 
@@ -412,6 +418,10 @@ def main() -> None:
     verify_figure_one_sources(input_dir)
     verify_noninferiority(input_dir)
     verify_figure_two(input_dir)
+    verify_empirical_coverage(input_dir / "eeg" / "empirical_reference")
+    print("[PASS] empirical coverage: both cohorts reproduced from 27 released subject summaries")
+    verify_target_only_reference(input_dir / "eeg" / "target_only_reference", input_dir)
+    print("[PASS] matched target-only: 10 latest-session comparisons and 30 target-dependent summaries reproduced")
     verify_archival_figure_three(input_dir, figure_dir)
     print("[PASS] compact result verification complete")
 

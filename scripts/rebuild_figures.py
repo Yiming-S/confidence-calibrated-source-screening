@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Rebuild the two data-reconstructable main figures from compact results.
-
-Figure 3 is an archival output: its compact metadata does not contain the
-bootstrap interval endpoints needed to redraw it.  ``verify_results.py`` checks
-that the archived PDF and its run metadata are present and internally valid.
-"""
+"""Rebuild all three current main figures from compact results."""
 
 from __future__ import annotations
 
@@ -26,7 +21,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from matplotlib.lines import Line2D
-from scipy.stats import sem, t
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -51,6 +45,7 @@ OVERVIEW_COLUMNS = [
     "mean_difference",
     "ci95_low",
     "ci95_high",
+    "one_sided_lcb95",
     "two_pp_noninferiority",
 ]
 
@@ -70,24 +65,6 @@ def one_method_row(data: pd.DataFrame, method: str, path: Path) -> pd.Series:
     if len(row) != 1:
         raise ValueError(f"expected one {method!r} row in {path}, found {len(row)}")
     return row.iloc[0]
-
-
-def subject_differences(path: Path) -> np.ndarray:
-    data = read_csv(path, {"subject", "method", "balanced_accuracy"})
-    if "analysis" in data.columns:
-        data = data[data["analysis"] == "primary"]
-    per_subject = (
-        data.groupby(["subject", "method"], as_index=False)["balanced_accuracy"]
-        .mean()
-        .pivot(index="subject", columns="method", values="balanced_accuracy")
-    )
-    missing = sorted({"all_sources", "pair_ref"} - set(per_subject.columns))
-    if missing:
-        raise ValueError(f"{path} is missing methods: {', '.join(missing)}")
-    values = (per_subject["pair_ref"] - per_subject["all_sources"]).dropna().to_numpy(float)
-    if values.size < 2:
-        raise ValueError(f"{path} contains fewer than two paired subjects")
-    return values
 
 
 def _dataset_summary(
@@ -125,16 +102,16 @@ def compute_eeg_overview(results: Path) -> pd.DataFrame:
             "stieger2021",
         ),
         (
-            "Zhou2020",
-            "eeg/zhou2020/downstream_summary.csv",
+            "Kumar2024",
+            "eeg/kumar2024/downstream_summary.csv",
             "primary",
-            "zhou2020",
+            "kumar2024",
         ),
         (
             "BNCI2014_004",
             "eeg/bnci2014_004/downstream_summary.csv",
             "primary",
-            None,
+            "bnci2014_004",
         ),
     ]
 
@@ -143,36 +120,28 @@ def compute_eeg_overview(results: Path) -> pd.DataFrame:
         all_sources, pair_ref = _dataset_summary(
             results, summary_file, analysis=analysis
         )
-        if ni_key is not None:
-            if ni_key not in noninferiority:
-                raise KeyError(f"{ni_path} has no {ni_key!r} result")
-            inference = noninferiority[ni_key]
-            required = {
-                "mean_diff",
-                "ci95_low",
-                "ci95_high",
-                "noninferior_at_delta",
-            }
-            missing = sorted(required - set(inference))
-            if missing:
-                raise ValueError(f"{ni_path}:{ni_key} is missing keys: {', '.join(missing)}")
-            mean_difference = float(inference["mean_diff"])
-            ci_low = float(inference["ci95_low"])
-            ci_high = float(inference["ci95_high"])
-            ni_status = (
-                "established"
-                if bool(inference["noninferior_at_delta"])
-                else "not established"
-            )
-        else:
-            values = subject_differences(
-                results / "eeg" / "bnci2014_004" / "downstream_by_subject.csv"
-            )
-            mean_difference = float(values.mean())
-            half_width = float(t.ppf(0.975, values.size - 1) * sem(values))
-            ci_low = mean_difference - half_width
-            ci_high = mean_difference + half_width
-            ni_status = "not tested"
+        if ni_key not in noninferiority:
+            raise KeyError(f"{ni_path} has no {ni_key!r} result")
+        inference = noninferiority[ni_key]
+        required = {
+            "mean_diff",
+            "ci95_low",
+            "ci95_high",
+            "one_sided_lcb95",
+            "noninferior_at_delta",
+        }
+        missing = sorted(required - set(inference))
+        if missing:
+            raise ValueError(f"{ni_path}:{ni_key} is missing keys: {', '.join(missing)}")
+        mean_difference = float(inference["mean_diff"])
+        ci_low = float(inference["ci95_low"])
+        ci_high = float(inference["ci95_high"])
+        one_sided_lcb95 = float(inference["one_sided_lcb95"])
+        ni_status = (
+            "established"
+            if bool(inference["noninferior_at_delta"])
+            else "inconclusive"
+        )
 
         candidate_count = float(all_sources["mean_set_size"])
         retained_count = float(pair_ref["mean_set_size"])
@@ -185,6 +154,7 @@ def compute_eeg_overview(results: Path) -> pd.DataFrame:
                 "mean_difference": mean_difference,
                 "ci95_low": ci_low,
                 "ci95_high": ci_high,
+                "one_sided_lcb95": one_sided_lcb95,
                 "two_pp_noninferiority": ni_status,
             }
         )
@@ -206,7 +176,7 @@ def verify_reconstructed_overview(results: Path, computed: pd.DataFrame) -> None
 def plot_eeg_overview(data: pd.DataFrame, output: Path) -> None:
     setup_style()
     y = np.arange(len(data))
-    pair_color = METHOD_COLORS["Pair/Ref"]
+    pair_color = METHOD_COLORS["Ref."]
     fig, axes = plt.subplots(
         1,
         2,
@@ -232,7 +202,7 @@ def plot_eeg_overview(data: pd.DataFrame, output: Path) -> None:
         )
     axes[0].set_yticks(y, data["dataset"])
     axes[0].set_xlim(0, 1.02)
-    axes[0].set_xlabel("Pair/Ref retained fraction")
+    axes[0].set_xlabel("Refinement retained fraction")
     axes[0].set_title("(a) Source reduction")
     format_axis(axes[0], ygrid=False)
     axes[0].grid(True, axis="x")
@@ -244,7 +214,7 @@ def plot_eeg_overview(data: pd.DataFrame, output: Path) -> None:
         mean,
         y,
         xerr=np.vstack([mean - lower, upper - mean]),
-        fmt=METHOD_MARKERS["Pair/Ref"],
+        fmt=METHOD_MARKERS["Ref."],
         color=pair_color,
         ecolor=pair_color,
         markeredgecolor="#2F3437",
@@ -255,7 +225,8 @@ def plot_eeg_overview(data: pd.DataFrame, output: Path) -> None:
     )
     axes[1].axvline(0.0, color="#333333", linewidth=1.0)
     axes[1].axvline(-0.02, color="#9CA3AF", linewidth=1.0, linestyle="--")
-    axes[1].set_xlim(-0.041, 0.041)
+    axes[1].set_xlim(min(-0.041, float(lower.min()) - 0.008),
+                     max(0.041, float(upper.max()) + 0.008))
     axes[1].set_xlabel("Balanced-accuracy difference vs all sources")
     axes[1].set_title("(b) Downstream performance")
     axes[1].tick_params(labelleft=False)
@@ -422,12 +393,18 @@ def main() -> None:
     results = args.input_dir.resolve()
     output = args.output_dir.resolve()
     overview = compute_eeg_overview(results)
+    overview_path = results / "figure_data" / "eeg_overview.csv"
     verify_reconstructed_overview(results, overview)
     plot_shared_target_evidence(results, output / "fig_shared_target_evidence.pdf")
     plot_eeg_overview(overview, output / "fig_eeg_overview.pdf")
-    print(f"[PASS] rebuilt Figure 1: {output / 'fig_shared_target_evidence.pdf'}")
-    print(f"[PASS] rebuilt Figure 2: {output / 'fig_eeg_overview.pdf'}")
-    print("[INFO] Figure 3 is an archival output and is not regenerated from compact data")
+    import make_current_publication_artifacts as current
+    current.KUMAR = results / "eeg" / "kumar2024"
+    current.SUPPLEMENTAL = current.KUMAR / "supplemental"
+    current.certificate_figure(output / "fig_kumar2024_exclusion_certificate.pdf")
+    print(f"[PASS] rebuilt shared-target evidence: {output / 'fig_shared_target_evidence.pdf'}")
+    print(f"[PASS] rebuilt EEG overview: {output / 'fig_eeg_overview.pdf'}")
+    print(f"[PASS] verified EEG overview data without modifying it: {overview_path}")
+    print(f"[PASS] rebuilt Kumar2024 exclusion certificate: {output / 'fig_kumar2024_exclusion_certificate.pdf'}")
 
 
 if __name__ == "__main__":

@@ -8,18 +8,26 @@
     0.02,
     0.03
   ],
-  "tests": [
-    "one-sided paired t non-inferiority test",
-    "one-sided Wilcoxon signed-rank non-inferiority test"
-  ],
-  "confidence_interval": "two-sided 95% t interval for the subject-level mean contrast",
-  "noninferior_at_delta_rule": "the two-sided 95% confidence-interval lower endpoint exceeds minus the margin",
+  "primary_test": "one-sided paired t non-inferiority test",
+  "sensitivity_test": "one-sided Wilcoxon signed-rank non-inferiority test",
+  "effect_interval": "two-sided 95% t interval for descriptive reporting",
+  "decision_bound": "95% one-sided t lower confidence bound for the subject-level mean contrast",
+  "noninferior_at_delta_rule": "the one-sided 95% lower confidence bound exceeds minus the margin",
   "decision_alpha": 0.05,
   "analysis_filter": "primary",
-  "primary_margin_timing": "the 0.02 margin was used for the Ma2020/Stieger2021 analysis and carried forward unchanged to Zhou2020",
+  "margin_interpretation": "a 0.02 absolute balanced-accuracy decrease is the largest accepted performance cost for the source-reduction comparison; it is an operational tolerance, not a clinical threshold",
+  "primary_margin_timing": "The 0.02 margin was used in the original cohorts and carried forward unchanged to exploratory Kumar2024.",
+  "evidence_roles": {
+    "stieger2021": "largest-cohort primary EEG evidence",
+    "bnci2014_004": "secondary nine-subject three-channel check",
+    "ma2020": "initial longitudinal analysis; inconclusive at the primary margin",
+    "kumar2024": "exploratory cohort added after original analyses"
+  },
   "inputs": {
     "ma2020": "results/eeg/ma2020/downstream_by_subject.csv",
     "stieger2021": "results/eeg/stieger2021/downstream_by_subject.csv",
-    "zhou2020": "results/eeg/zhou2020/downstream_by_subject.csv"
-  }
+    "bnci2014_004": "results/eeg/bnci2014_004/downstream_by_subject.csv",
+    "kumar2024": "results/eeg/kumar2024/downstream_by_subject.csv"
+  },
+  "kumar_planned_tests": "paired t tests at 0.01 and 0.02 only; no Wilcoxon or 0.03 test"
 }

@@ -4,6 +4,7 @@
     "mean_diff": 0.0014666666666666873,
     "ci95_low": -0.028306138181849752,
     "ci95_high": 0.03123947151518313,
+    "one_sided_lcb95": -0.023213692741979423,
     "delta_NI": 0.02,
     "noninferior_at_delta": false,
     "p_noninferiority_ttest": 0.07487311047563168,
@@ -15,21 +16,35 @@
     "mean_diff": -0.004769497850991891,
     "ci95_low": -0.017374913324433378,
     "ci95_high": 0.007835917622449597,
+    "one_sided_lcb95": -0.015298384728898065,
     "delta_NI": 0.02,
     "noninferior_at_delta": true,
     "p_noninferiority_ttest": 0.009349437635079075,
     "p_noninferiority_wilcoxon": 0.008816204430010811,
     "frac_subjects_within_margin": 0.6451612903225806
   },
-  "zhou2020": {
-    "n_subjects": 20,
-    "mean_diff": -0.0022986111111111375,
-    "ci95_low": -0.019439345798168854,
-    "ci95_high": 0.01484212357594658,
+  "bnci2014_004": {
+    "n_subjects": 9,
+    "mean_diff": 0.0057707954657124395,
+    "ci95_low": -0.02481317112878938,
+    "ci95_high": 0.03635476206021426,
+    "one_sided_lcb95": -0.018891933534743038,
     "delta_NI": 0.02,
     "noninferior_at_delta": true,
-    "p_noninferiority_ttest": 0.021815275366185036,
-    "p_noninferiority_wilcoxon": 0.0412750244140625,
-    "frac_subjects_within_margin": 0.65
+    "p_noninferiority_ttest": 0.04396250605280973,
+    "p_noninferiority_wilcoxon": 0.037109375,
+    "frac_subjects_within_margin": 0.7777777777777778
+  },
+  "kumar2024": {
+    "n_subjects": 18,
+    "mean_diff": 0.02578265356043139,
+    "ci95_low": -0.005323345736609884,
+    "ci95_high": 0.05688865285747267,
+    "one_sided_lcb95": 0.00013481676988425992,
+    "delta_NI": 0.02,
+    "noninferior_at_delta": true,
+    "p_noninferiority_ttest": 0.0032156507623692866,
+    "frac_subjects_within_margin": 0.8333333333333334,
+    "analysis_role": "exploratory"
   }
 }

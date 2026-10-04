@@ -1,18 +1,26 @@
-.PHONY: manifest verify figures syntax test smoke
+.PHONY: manifest verify figures tables syntax test smoke
+
+PYTHON ?= python3
 
 manifest:
-	python3 scripts/build_manifest.py
+	$(PYTHON) scripts/build_manifest.py
 
 verify:
-	python3 scripts/verify_results.py
+	$(PYTHON) scripts/verify_results.py
+	$(PYTHON) scripts/verify_revision_results.py
 
 figures:
-	MPLBACKEND=Agg python3 scripts/rebuild_figures.py
+	MPLBACKEND=Agg $(PYTHON) scripts/rebuild_figures.py
+
+tables:
+	$(PYTHON) scripts/make_bspc_revision_tables.py
+	$(PYTHON) scripts/make_current_publication_artifacts.py
 
 syntax:
-	python3 -m compileall -q analysis scripts tests
+	$(PYTHON) -m compileall -q analysis scripts tests
 
 test:
-	python3 -m unittest discover -s tests -v
+	$(PYTHON) -m unittest discover -s tests -v
+	cd analysis/kumar2024 && "$(abspath $(shell command -v $(PYTHON)))" -m unittest discover -s . -p 'test_*.py' -v
 
-smoke: verify figures syntax test
+smoke: verify figures tables syntax test

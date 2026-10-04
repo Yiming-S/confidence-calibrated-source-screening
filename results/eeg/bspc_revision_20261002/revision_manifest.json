@@ -1,0 +1,256 @@
+{
+  "revision_date": "2026-10-02",
+  "analyses": {
+    "mcs_ma2020": {
+      "subjects": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "settings": {
+        "alpha": 0.05,
+        "alpha_c": 0.025,
+        "alpha_d": 0.025,
+        "boot": 199,
+        "dataset": "ma2020",
+        "seed": 20260618,
+        "shrinkage": 0.1,
+        "splits": 30,
+        "target_session": 15
+      },
+      "package_versions": {
+        "mne": "1.11.0",
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "scipy": "1.15.3"
+      },
+      "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]",
+      "statistical_unit": "subject",
+      "protocol_note": "Independent paired run; identical target splits, shared draws within each calibrated-method comparison. The older baseline also consumed random subset draws and therefore has a different later bootstrap stream."
+    },
+    "mcs_stieger2021": {
+      "subjects": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62
+      ],
+      "settings": {
+        "alpha": 0.05,
+        "alpha_c": 0.025,
+        "alpha_d": 0.025,
+        "boot": 199,
+        "dataset": "stieger2021",
+        "seed": 20260707,
+        "shrinkage": 0.1,
+        "splits": 30,
+        "target_session": null
+      },
+      "package_versions": {
+        "mne": "1.11.0",
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "scipy": "1.15.3"
+      },
+      "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:11:29) [Clang 20.1.8 ]",
+      "statistical_unit": "subject",
+      "protocol_note": "Independent paired run; identical target splits, shared draws within each calibrated-method comparison. The older baseline also consumed random subset draws and therefore has a different later bootstrap stream."
+    },
+    "bootstrap_budget": {
+      "subjects": {
+        "ma2020": [
+          1,
+          2,
+          3
+        ],
+        "stieger2021": [
+          1,
+          2,
+          3
+        ],
+        "kumar2024": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budgets": [
+        99,
+        199,
+        499,
+        999
+      ],
+      "bootstrap_seeds": [
+        2026100201,
+        2026100202,
+        2026100203
+      ],
+      "splits_per_subject": 2,
+      "split_seed_bases": {
+        "ma2020": 20260618,
+        "stieger2021": 20260707,
+        "kumar2024": 20260714
+      },
+      "audit": {
+        "component_floor_count": 0,
+        "component_nonfinite_count": 0,
+        "contrast_floor_count": 0,
+        "contrast_nonfinite_count": 0,
+        "maximum_absolute_size_change_vs_999": 1,
+        "minimum_jaccard_vs_999": 0.8,
+        "n_budget_results": 216,
+        "n_fixed_samples": 18,
+        "n_seed_sample_draw_arrays": 54,
+        "n_subjects": 9
+      },
+      "packages": {
+        "numpy": "2.2.6",
+        "pandas": "2.3.3",
+        "scikit-learn": "1.7.2",
+        "scipy": "1.15.3",
+        "threadpoolctl": "3.6.0"
+      },
+      "scope": "Current-manuscript subset: original Ma2020 and Stieger2021 checks plus separately planned post-outcome exploratory Kumar2024 checks; numerical stability only.",
+      "historical_plan_sha256": "40c55585295376b6ca3bdefb2f71570142364ffe51b398924a7f9301ff187b3a",
+      "kumar_plan_sha256": "7de82abe04355f0f633e12dc923a93b0bf1610379c6bf3a875c87ee051058ef4",
+      "kumar_environment": {
+        "numeric_threads_per_worker": 1,
+        "numpy": "2.5.3",
+        "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.43",
+        "python": "3.12.14",
+        "scikit_learn": "1.9.1",
+        "scipy": "1.18.1"
+      }
+    },
+    "runtime": {
+      "protocol": {
+        "subjects_each_dataset": [
+          1,
+          2,
+          3
+        ],
+        "repetitions": 3,
+        "n_boot": 199,
+        "alpha": 0.05,
+        "alpha_c": 0.025,
+        "alpha_d": 0.025,
+        "screen_shrinkage": 0.1,
+        "classifier_shrinkage": 0.05,
+        "split": "first of original 30 StratifiedShuffleSplit draws; test_size=0.5",
+        "base_seeds": {
+          "ma2020": 20260618,
+          "stieger2021": 20260707
+        },
+        "bootstrap_seed_formula": "dataset base seed + 12345 + subject",
+        "riemann_mean_iterations": 5,
+        "numerical_threads": 1
+      },
+      "timing_boundary": "In-memory cached trial covariances through source selection, model fitting and test prediction; not raw-EEG acquisition/preprocessing or cache I/O.",
+      "excluded_from_timing": [
+        "module imports",
+        "cache reading and validation",
+        "input hashing",
+        "target split creation",
+        "warm-up",
+        "accuracy scoring",
+        "output writing"
+      ],
+      "summary_policy": "Median of three timings within each subject/method; arithmetic mean of subject medians within dataset. Ratios are ratios of those dataset means.",
+      "hardware": {
+        "cpu": "Apple M3 Ultra",
+        "machine": "arm64",
+        "logical_cpus": 28
+      },
+      "versions": {
+        "numpy": "2.2.6",
+        "scipy": "1.15.3",
+        "pandas": "2.3.3",
+        "sklearn": "1.7.2",
+        "mne": "1.11.0",
+        "threadpoolctl": "3.5.0"
+      }
+    }
+  }
+}
